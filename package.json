@@ -1,0 +1,34 @@
+{
+  "name": "proyect-glovo",
+  "version": "1.0.0",
+  "description": "This proyect will simulate the same functionallity that we have in Glovo app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon -e js,css,html,hbs app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrisArranz/proyect-glovo.git"
+  },
+  "author": "Cristian Arranz Arevalo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CrisArranz/proyect-glovo/issues"
+  },
+  "homepage": "https://github.com/CrisArranz/proyect-glovo#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "hbs": "^4.2.0",
+    "http-errors": "^2.0.0",
+    "mongoose": "^6.4.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

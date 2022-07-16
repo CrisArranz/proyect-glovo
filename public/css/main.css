@@ -1,0 +1,50 @@
+body, html{
+    height: 100%;
+}
+
+.custom-img-logo{
+    width: 7.5rem;
+}
+
+.navbar {
+    padding: 30px 7.5%;
+}
+
+.bg-success, .btn-success{
+    background-color: #00a082!important;
+}
+
+.bg-custom-navbar{
+    background-color: #FFC244FF;
+}
+
+.fs-custom-first-banner{
+    font-size: 58px;
+}
+.fs-custom-second-banner{
+    font-size: 20px;
+}
+
+.custom-first-banner-max-width{
+    max-width: 540px;
+}
+
+.app-width-custom{
+    width: 6.5rem;
+    border: 1.5px solid white;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+footer {
+    color: white;
+    background-color: black;
+}
