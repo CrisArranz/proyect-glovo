@@ -8,7 +8,9 @@ const EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\"
 const PASSWORD_PATTERN = /^.{8,}$/;
 const SALT_WORK_FACTOR = 10;
 
-const ADMINS = 'c.arranz.arevalo@gmail.com;poker11'.split(';');
+const LIST_ADMINS = 'c.arranz.arevalo@gmail.com';
+
+const ADMINS = LIST_ADMINS.split(';');
 
 const userSchema = new Schema({
     name: {
@@ -17,11 +19,13 @@ const userSchema = new Schema({
         trim: true,
         required: 'The name is required'
     },
-    surname: {
+    email: {
         type: String,
-        maxLength: [40, 'The surname cannot have more than 40 chars'],
+        required: 'User email is required',
+        lowercase: true,
         trim: true,
-        required: 'The surname is required'
+        unique: true,
+        match: [EMAIL_PATTERN, 'Invalid email']
     },
     phone: {
         type: Number,
@@ -32,22 +36,13 @@ const userSchema = new Schema({
         required: 'User password is required',
         match: [PASSWORD_PATTERN, 'The password need at least 8 chars']
     },
-    email: {
-        type: String,
-        required: 'User email is required',
-        lowercase: true,
-        trim: true,
-        unique: true,
-        match: [EMAIL_PATTERN, 'Invalid email']
-    },
-    role: {
-        type: String,
-        enum: ['admin', 'client']
+    isAdmin: {
+        type: Boolean
     }
 });
 
 userSchema.pre('save', function(next){
-    this.role = (ADMINS.includes(this.email) || ADMINS.includes(this.username)) ? 'admin' : 'client';
+    this.isAdmin = ADMINS.includes(this.email);
     if (this.isModified('password')) {
         return bcryptjs
             .hash(this.password, SALT_WORK_FACTOR)

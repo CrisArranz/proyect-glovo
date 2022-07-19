@@ -1,14 +1,37 @@
 <nav class="navbar sticky-top navbar-expand-lg bg-custom-navbar">
     <div class="container-fluid">
         <a href="/"><img class="custom-img-logo" src="/image/glovo-1.svg" /></a>
-        <form class="d-flex" role="search" action="/filter-search" method="GET">
-            <input class="form-control me-2" name="search" type="search" placeholder="Search" value=""{{search}} />
-            <button class="btn btn-success" type="submit">Search</button>
-        </form>
-        <a class="btn btn-success rounded-pill text-white fs-5 fw-bold pt-2 pb-2 ps-4 pe-4" href="/login">Empezar</a>
+        {{#if currentUser }}
+            <form class="d-flex" role="search" action="/filter-search" method="GET">
+                <input class="form-control me-2" name="search" type="search" placeholder="Búsqueda..." value=""{{search}} />
+                <button class="btn btn-success" type="submit">Buscar</button>
+            </form>
+            <div class="d-flex">
+                <div class="btn-group">
+                    <a class="btn btn-light rounded-circle me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-regular fa-user fa-fw"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                        <li><a class="dropdown-item" href="/users/{{currentUser._id}}">Actualizar usuario</a></li>
+                        <li><a class="dropdown-item" href="/payments">Gestionar Métodos de Pago</a></li>
+                        {{#if currentUser.isAdmin}}<li><a class="dropdown-item" href="/establisment">Gestionar establecimientos</a></li>{{/if}}
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/logout">Desconectar</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a class="btn btn-light rounded-circle me-2" href="/orders/{{currentUser._id}}">
+                        <i class="fa-regular fa-rectangle-list fa-fw"></i>
+                    </a>
+                </div>
+            </div>
+        {{else}}
+            <a class="btn btn-success rounded-pill text-white fs-5 fw-bold pt-2 pb-2 ps-4 pe-4" href="/login">Empezar</a>
+        {{/if}}
     </div>
 </nav>
-{{#if user }}
+{{#if hideHeaders }}
+{{else}}
     <div class="d-flex justify-content-center mb-5 bg-custom-navbar pb-5">
         <video autoplay="autoplay" loop="loop" muted="muted">
             <source src="https://res.cloudinary.com/glovoapp//video/upload//website_assets/images/landing/address-container-animation.webm" preload="auto" type="video/webm">

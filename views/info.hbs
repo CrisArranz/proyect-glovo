@@ -1,19 +1,14 @@
-{{> header }}
-<div class="container">
-    <p>Lorem Ipsum</p>
-    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
-    <p>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+{{> header hideHeaders = true }}
+<div class="container mt-5 mb-5">
+    {{#if title}}<h1 class="mb-4">{{title}}</h1>{{/if}}
+    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+    <p>There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras condimentum viverra dapibus. Nullam vulputate lectus sed lacus gravida, condimentum euismod nisl accumsan. Phasellus aliquet, lectus eu fermentum euismod, dui velit euismod tortor, eu mollis turpis tortor ut quam. Suspendisse sed gravida nulla. Suspendisse neque est, ullamcorper ut enim nec, interdum laoreet est. Curabitur est lectus, rutrum et posuere sed, ultrices et ante. Nullam leo mauris, egestas sed dapibus in, mollis et ex. Phasellus vitae malesuada lorem.</p>
-
     <p>Proin ac bibendum ante. Fusce iaculis ac orci ut aliquam. Pellentesque risus felis, commodo sit amet sollicitudin sed, pellentesque id orci. In condimentum fermentum augue ut rutrum. Duis a velit eu orci eleifend rhoncus. Morbi lacinia dignissim est, malesuada vestibulum nibh semper id. Donec quis imperdiet urna, viverra tristique nibh. In pulvinar venenatis nulla vel congue. Curabitur malesuada diam at elit auctor rhoncus.</p>
-
     <p>Duis nec metus sed nunc blandit facilisis. Sed blandit ac lacus quis faucibus. Etiam interdum ultrices ante, a commodo eros dignissim sed. Quisque placerat dictum pellentesque. Aenean mattis odio malesuada consectetur euismod. Morbi scelerisque euismod justo, et dapibus nunc tristique quis. Ut ut sodales felis.</p>
-
     <p>Etiam vestibulum maximus ante sed luctus. In vitae sapien eget lacus condimentum fringilla eget quis urna. Morbi sit amet est vehicula, scelerisque libero ut, ultricies turpis. Fusce eleifend faucibus metus sed feugiat. Integer felis nisl, pulvinar volutpat laoreet sed, congue sed mauris. Ut gravida felis leo. Fusce feugiat erat non tristique auctor.</p>
-
     <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras ut arcu id ligula placerat pellentesque. Sed euismod lorem at dignissim scelerisque. Aliquam eu magna id purus tincidunt lacinia. Maecenas ut sagittis elit, ut ornare odio. Donec ornare fermentum dui sed fermentum. Nunc lacinia sagittis purus, eget porttitor tortor volutpat eu. Curabitur maximus lacinia urna. In lorem nibh, varius vel magna ac, hendrerit lobortis magna. Aenean ac aliquam enim. Cras sit amet nisi accumsan, dignissim magna sed, volutpat purus.</p>
-
-    <p>Generated 5 paragraphs, 318 words, 2174 bytes of Lorem Ipsum</p>
-    <p>help@lipsum.com</p>
+    <p class="fst-italic">Generated 5 paragraphs, 318 words, 2174 bytes of Lorem Ipsum</p>
+    <p class="fst-italic">help@lipsum.com</p>
     <p>Privacy Policy</p>
 </div>

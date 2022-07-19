@@ -25,7 +25,7 @@ const loadUser = (req, res, next) => {
         .then(user => {
             req.user = user;
             res.locals.currentUser = user;
-            res.locals.admin = user.role === 'admin';
+            res.locals.admin = user.isAdmin;
             next();
         })
         .catch(next);
