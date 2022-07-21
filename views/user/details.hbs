@@ -5,12 +5,12 @@
             <h5 class="mb-4 text-center text-success fst-italic">{{user.email}}</h5>
             <form action="/users/{{user._id}}/update" method="POST">
                 <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="fa-solid fa-user fa-fw"></i></i></span>
+                    <span class="input-group-text"><i class="fa-solid fa-user fa-fw"></i></span>
                     <input type="text" name="name" class="form-control {{#if errors.name }}is-invalid{{/if}}" placeholder="Nombre" value="{{user.name}}" />
                     <div class="invalid-feedback mt-2">{{errors.name}}</div>
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="fa-solid fa-phone fa-fw"></i></i></span>
+                    <span class="input-group-text"><i class="fa-solid fa-phone fa-fw"></i></span>
                     <input type="text" name="phone" class="form-control {{#if errors.phone }}is-invalid{{/if}}" placeholder="Telefono" value="{{user.phone}}" />
                     <div class="invalid-feedback mt-2">{{errors.phone}}</div>
                 </div>

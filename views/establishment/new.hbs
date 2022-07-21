@@ -19,38 +19,38 @@
                         </div>
                         <div class="col-7">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="typeFood" value="american" />
+                                <input class="form-check-input" type="checkbox" name="types" value="american" />
                                 <label class="form-check-label"><i class="fa-solid fa-burger fa-fw" data-bs-toggle="tooltip" data-bs-title="Americano"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="typeFood" value="asian" />
+                                <input class="form-check-input" type="checkbox" name="types" value="asian" />
                                 <label class="form-check-label"><i class="fa-solid fa-bowl-rice fa-fw" data-bs-toggle="tooltip" data-bs-title="Asiático"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="typeFood" value="italian" />
+                                <input class="form-check-input" type="checkbox" name="types" value="italian" />
                                 <label class="form-check-label"><i class="fa-solid fa-pizza-slice fa-fw" data-bs-toggle="tooltip" data-bs-title="Italiano"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="typeFood" value="spanish" />
+                                <input class="form-check-input" type="checkbox" name="types" value="spanish" />
                                 <label class="form-check-label"><i class="fa-solid fa-bacon fa-fw" data-bs-toggle="tooltip" data-bs-title="Español"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="typeFood" value="mexican" />
+                                <input class="form-check-input" type="checkbox" name="types" value="mexican" />
                                 <label class="form-check-label"><i class="fa-solid fa-pepper-hot fa-fw" data-bs-toggle="tooltip" data-bs-title="Mejicano"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="typeFood" value="vegan" />
+                                <input class="form-check-input" type="checkbox" name="types" value="vegan" />
                                 <label class="form-check-label"><i class="fa-solid fa-wheat-awn fa-fw" data-bs-toggle="tooltip" data-bs-title="Vegano"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="typeFood" value="galician" />
-                                <label class="form-check-label"><i class="fa-solid fa-shrimp fa-fw" data-bs-toggle="tooltip" data-bs-title="Rias Baixas"></i></label>
+                                <input class="form-check-input" type="checkbox" name="types" value="seafood" />
+                                <label class="form-check-label"><i class="fa-solid fa-shrimp fa-fw" data-bs-toggle="tooltip" data-bs-title="Marisco"></i></label>
                             </div>
                         </div>
                     </div>
-                    {{#if errors.typeFood}}
+                    {{#if errors.foodType}}
                         <div class="invalid-feedback">
-                            {{errors.typeFood}}
+                            {{errors.foodType}}
                         </div>
                     {{/if}}
                 </div>
@@ -67,7 +67,7 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label class="form-label">Longitud</label>
-                            <input name="longitude" type="text" class="form-control {{#if errors.image}}is-invalid{{/if}}" value="{{establishment.longitude}}" placeholder="Longitud..." />
+                            <input name="longitude" type="text" class="form-control {{#if errors.longitude}}is-invalid{{/if}}" value="{{establishment.longitude}}" placeholder="Longitud..." />
                             {{#if errors.longitude}}
                                 <div class="invalid-feedback">
                                     {{errors.longitude}}
@@ -78,7 +78,7 @@
                     <div class="col-6">
                         <div class="mb-3">
                             <label class="form-label">Latitud</label>
-                            <input name="latitude" type="text" class="form-control {{#if errors.image}}is-invalid{{/if}}" value="{{establishment.latitude}}" placeholder="Latitud..." />
+                            <input name="latitude" type="text" class="form-control {{#if errors.latitude}}is-invalid{{/if}}" value="{{establishment.latitude}}" placeholder="Latitud..." />
                             {{#if errors.latitude}}
                                 <div class="invalid-feedback">
                                     {{errors.latitude}}

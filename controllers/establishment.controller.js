@@ -12,6 +12,7 @@ module.exports.getEstablishments = (req, res, next) => {
 module.exports.filterEstablishments = (req, res, next) => {
     res.locals.hideHeader = true;
     const { search } = req.query;
+
     Establishment
       .find({name: new RegExp(search)})
       .then(establishment => res.render('establishment/list' , { establishment, search }))
@@ -23,7 +24,9 @@ module.exports.getEstablishment = (req, res, next) => {
 
     Establishment
         .findById(req.params.id)
-        .then(establishment => res.render('establishment/detail', { establishment }))
+        .then(establishment => {
+            res.render('establishment/detail', { establishment })
+        })
         .catch(error => next(error));
 }
 
@@ -41,11 +44,15 @@ module.exports.doCreate = (req, res, next) => {
         })
     }
     
-    const establishment = { name, typeFood, photo } = req.body
-    
+    const establishment = { name, photo, types } = req.body;
+    establishment.foodType = establishment.types.reduce((types, type) => {
+        types[type] = true;
+        return types;
+    }, {})
+
     establishment.location = { 
         type: 'Point', 
-        coordenates: [req.body.longitude, req.body.latitude] 
+        coordinates: [req.body.longitude, req.body.latitude] 
     }
 
     Establishment

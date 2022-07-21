@@ -1,4 +1,4 @@
-<div class="container h-75 mt-5 mb-5">
+<div class="container {{#if establishment}}{{else}}h-75{{/if}} mt-5 mb-5">
     <div class="row justify-content-end">
         <div class="col-4">
             <form method="GET" action="/establishment/filter-search" role="search" class="d-flex">
@@ -13,15 +13,13 @@
     {{#if establishment}}
         <div class="row mt-5">
             {{#each establishment}}
-                <div class="col-3 establishment-custom-dimension">
-                    <a class="d-flex justify-content-center align-items-center h-100" href="/establishment/{{this.id}}">
-                        <div class="img-hover-zoom card text-bg-dark h-100 w-100 overflow-hidden">
+                <div class="col-3 establishment-custom-dimension mt-5 mb-5">
+                    <a class="d-flex justify-content-center align-items-center h-100" href="/establishment/{{this.id}}" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
+                        <div class="img-hover-zoom card h-100 w-100 overflow-hidden">
                             <img src="{{this.photo}}" class="card-img h-100 w-100" alt="{{this.name}}">
-                            <div class="card-img-overlay d-flex h-100 align-items-center justify-content-center">
-                                <h5 class="card-title text-center fs-2">{{this.name}}</h5>
-                            </div>
                         </div>
                     </a>
+                    <div>Localizacion: <span class="fst-italic text-danger">[insertaremos donde esta el establecimiento]</span></div>
                 </div>
             {{/each}}
         </div>

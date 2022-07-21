@@ -32,7 +32,7 @@ router.post('/register', auth.doRegister);
 
 //Users details
 router.get('/users/:id', secure.isAuthenticated, user.getUser);
-router.post('/users/:id/update', secure.isAuthenticated, user.updateUser);
+router.post('/users/:id/update', secure.isAuthenticated, user.updateUser); 
 
 //Establishment
 router.get('/establishment', secure.isAuthenticated, secure.isAdmin, establishment.getEstablishments);
