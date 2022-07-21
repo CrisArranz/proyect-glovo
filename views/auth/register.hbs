@@ -1,8 +1,7 @@
-{{> header hideHeaders = true}}
 <div class="container h-75 d-flex flex-column justify-content-around">
     <div class="row justify-content-center">
         <div class="col-4">
-            <h2 class="mb-4">Register</h2>
+            <h2 class="mb-4">Registro</h2>
             <form action="/register" method="POST">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa-solid fa-at fa-fw"></i></span>
@@ -14,7 +13,7 @@
                     {{/if}}
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="fa-solid fa-envelope fa-fw"></i></i></span>
+                    <span class="input-group-text"><i class="fa-solid fa-envelope fa-fw"></i></span>
                     <input name="email" type="text" class="form-control {{#if errors.email}}is-invalid{{/if}}" placeholder="Email: example@example.com" value="{{user.email}}" />
                     {{#if errors.email}}
                         <div class="invalid-feedback">
@@ -41,7 +40,7 @@
                     {{/if}}
                 </div>
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-success">Create</button>
+                    <button type="submit" class="btn btn-success">Crear</button>
                 </div>
                 <hr>
                 <div class="d-grid gap-2">

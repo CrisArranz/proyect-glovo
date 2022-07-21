@@ -1,0 +1,97 @@
+<div class="container h-75 d-flex flex-column justify-content-around">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h2 class="mb-4">Nuevo Establecimiento</h2>
+            <form action="/establishment/create" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input name="name" type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" placeholder="Nombre establecimiento..." value="{{establishment.name}}" />
+                    {{#if errors.name}}
+                        <div class="invalid-feedback">
+                            {{errors.name}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-5">
+                            <label class="form-label me-2">Tipos de comida: </label>
+                        </div>
+                        <div class="col-7">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="typeFood" value="american" />
+                                <label class="form-check-label"><i class="fa-solid fa-burger fa-fw" data-bs-toggle="tooltip" data-bs-title="Americano"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="typeFood" value="asian" />
+                                <label class="form-check-label"><i class="fa-solid fa-bowl-rice fa-fw" data-bs-toggle="tooltip" data-bs-title="Asiático"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="typeFood" value="italian" />
+                                <label class="form-check-label"><i class="fa-solid fa-pizza-slice fa-fw" data-bs-toggle="tooltip" data-bs-title="Italiano"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="typeFood" value="spanish" />
+                                <label class="form-check-label"><i class="fa-solid fa-bacon fa-fw" data-bs-toggle="tooltip" data-bs-title="Español"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="typeFood" value="mexican" />
+                                <label class="form-check-label"><i class="fa-solid fa-pepper-hot fa-fw" data-bs-toggle="tooltip" data-bs-title="Mejicano"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="typeFood" value="vegan" />
+                                <label class="form-check-label"><i class="fa-solid fa-wheat-awn fa-fw" data-bs-toggle="tooltip" data-bs-title="Vegano"></i></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="typeFood" value="galician" />
+                                <label class="form-check-label"><i class="fa-solid fa-shrimp fa-fw" data-bs-toggle="tooltip" data-bs-title="Rias Baixas"></i></label>
+                            </div>
+                        </div>
+                    </div>
+                    {{#if errors.typeFood}}
+                        <div class="invalid-feedback">
+                            {{errors.typeFood}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Imagen</label>
+                    <input name="photo" type="text" class="form-control {{#if errors.image}}is-invalid{{/if}}" value="{{establishment.photo}}" placeholder="URL..." />
+                    {{#if errors.photo}}
+                        <div class="invalid-feedback">
+                            {{errors.photo}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label class="form-label">Longitud</label>
+                            <input name="longitude" type="text" class="form-control {{#if errors.image}}is-invalid{{/if}}" value="{{establishment.longitude}}" placeholder="Longitud..." />
+                            {{#if errors.longitude}}
+                                <div class="invalid-feedback">
+                                    {{errors.longitude}}
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label class="form-label">Latitud</label>
+                            <input name="latitude" type="text" class="form-control {{#if errors.image}}is-invalid{{/if}}" value="{{establishment.latitude}}" placeholder="Latitud..." />
+                            {{#if errors.latitude}}
+                                <div class="invalid-feedback">
+                                    {{errors.latitude}}
+                                </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="w-100"></div>
+</div>

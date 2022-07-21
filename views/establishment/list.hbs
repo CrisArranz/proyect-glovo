@@ -1,0 +1,33 @@
+<div class="container h-75 mt-5 mb-5">
+    <div class="row justify-content-end">
+        <div class="col-4">
+            <form method="GET" action="/establishment/filter-search" role="search" class="d-flex">
+                <input  class="form-control me-2" name="search" type="search" placeholder="Nombre establecimiento" />
+                <button type="submit" class="btn btn-success">Buscar</button>
+            </form>
+        </div>
+        <div class="col-4 d-flex justify-content-end">
+            <a id="addEstablishment" class="btn btn-success rounded-circle me-2" href="/establishment/create" data-bs-toggle="tooltip" data-bs-title="Añadir establecimiento"><i class="fa-regular fa-plus fa-fw"></i></a>
+        </div>
+    </div>
+    {{#if establishment}}
+        <div class="row mt-5">
+            {{#each establishment}}
+                <div class="col-3 establishment-custom-dimension">
+                    <a class="d-flex justify-content-center align-items-center h-100" href="/establishment/{{this.id}}">
+                        <div class="img-hover-zoom card text-bg-dark h-100 w-100 overflow-hidden">
+                            <img src="{{this.photo}}" class="card-img h-100 w-100" alt="{{this.name}}">
+                            <div class="card-img-overlay d-flex h-100 align-items-center justify-content-center">
+                                <h5 class="card-title text-center fs-2">{{this.name}}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="row h-75 align-items-center">
+            <div class="col-12 d-flex justify-content-center">No tenemos ningún establecimiento registrado.</div>
+        </div>
+    {{/if}}
+</div>

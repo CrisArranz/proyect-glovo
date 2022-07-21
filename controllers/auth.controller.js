@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { User } = require("../models");
 
 module.exports.register = (req, res, next) => {
+    res.locals.hideHeader = true; 
     res.render('auth/register')
 }
 
@@ -37,6 +38,7 @@ module.exports.doRegister = (req, res, next) => {
 
 
 module.exports.login = (req, res, next) => {
+    res.locals.hideHeader = true;
     res.render('auth/login');
 }
 

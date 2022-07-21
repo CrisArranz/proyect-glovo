@@ -1,0 +1,61 @@
+const mongoose = require('mongoose');
+const { Establishment } = require('../models');
+
+module.exports.getEstablishments = (req, res, next) => {
+    res.locals.hideHeader = true;
+    Establishment
+        .find()
+        .then(establishment => res.render('establishment/list', { establishment }))
+        .catch(error => next(error));
+}
+
+module.exports.filterEstablishments = (req, res, next) => {
+    res.locals.hideHeader = true;
+    const { search } = req.query;
+    Establishment
+      .find({name: new RegExp(search)})
+      .then(establishment => res.render('establishment/list' , { establishment, search }))
+      .catch(error => next(error));
+}
+
+module.exports.getEstablishment = (req, res, next) => {
+    res.locals.hideHeader = true;
+
+    Establishment
+        .findById(req.params.id)
+        .then(establishment => res.render('establishment/detail', { establishment }))
+        .catch(error => next(error));
+}
+
+module.exports.create = (req, res, next) => {
+    res.locals.hideHeader = true;
+    res.render('establishment/new');
+}
+
+module.exports.doCreate = (req, res, next) => {
+
+    function renderWithErrors(errors){
+        res.status(400).render('establishment/create', { 
+            errors, 
+            establishment: req.body 
+        })
+    }
+    
+    const establishment = { name, typeFood, photo } = req.body
+    
+    establishment.location = { 
+        type: 'Point', 
+        coordenates: [req.body.longitude, req.body.latitude] 
+    }
+
+    Establishment
+      .create(establishment)
+      .then(() => res.redirect('/establishment'))
+      .catch(error => {
+        if (error instanceof mongoose.Error.ValidationError) {
+            renderWithErrors(error.errors);
+        } else {
+            next(error);
+        }
+      });
+}
