@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Establishment } = require('../models');
+const { Establishment, Product } = require('../models');
 
 module.exports.getEstablishments = (req, res, next) => {
     res.locals.hideHeader = true;
@@ -25,7 +25,9 @@ module.exports.getEstablishment = (req, res, next) => {
     Establishment
         .findById(req.params.id)
         .then(establishment => {
-            res.render('establishment/detail', { establishment })
+            return Product
+                .find({idEstablishment: establishment._id})
+                .then(products => res.render('establishment/detail', { establishment, products }))
         })
         .catch(error => next(error));
 }

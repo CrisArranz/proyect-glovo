@@ -7,13 +7,13 @@
             </form>
         </div>
         <div class="col-4 d-flex justify-content-end">
-            <a id="addEstablishment" class="btn btn-success rounded-circle me-2" href="/establishment/create" data-bs-toggle="tooltip" data-bs-title="Añadir establecimiento"><i class="fa-regular fa-plus fa-fw"></i></a>
+            <a class="btn btn-success rounded-circle me-2" href="/establishment/create" data-bs-toggle="tooltip" data-bs-title="Añadir establecimiento"><i class="fa-regular fa-plus fa-fw"></i></a>
         </div>
     </div>
     {{#if establishment}}
         <div class="row mt-5">
             {{#each establishment}}
-                <div class="col-3 establishment-custom-dimension mt-5 mb-5">
+                <div class="col-3 custom-dimension mt-5 mb-5">
                     <a class="d-flex justify-content-center align-items-center h-100" href="/establishment/{{this.id}}" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
                         <div class="img-hover-zoom card h-100 w-100 overflow-hidden">
                             <img src="{{this.photo}}" class="card-img h-100 w-100" alt="{{this.name}}">
