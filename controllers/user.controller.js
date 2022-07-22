@@ -20,7 +20,7 @@ module.exports.updateUser = (req, res, next) => {
         })
     }
     
-    const user = { name, phone } = req.body
+    const user = { name, phone } = req.body;
 
     User
         .findByIdAndUpdate(req.params.id, user)

@@ -19,7 +19,7 @@ module.exports.filterEstablishments = (req, res, next) => {
       .catch(error => next(error));
 }
 
-module.exports.getEstablishment = (req, res, next) => {
+module.exports.update = (req, res, next) => {
     res.locals.hideHeader = true;
 
     Establishment
@@ -28,6 +28,29 @@ module.exports.getEstablishment = (req, res, next) => {
             return Product
                 .find({idEstablishment: establishment._id})
                 .then(products => res.render('establishment/detail', { establishment, products }))
+        })
+        .catch(error => next(error));
+}
+
+
+module.exports.doUpdate = (req, res, next) => {
+    res.locals.hideHeader = true;
+
+    const establishment = { photo, types } = req.body;
+    establishment.foodType = establishment.types.reduce((types, type) => {
+        types[type] = true;
+        return types;
+    }, {})
+
+    establishment.location = { 
+        type: 'Point', 
+        coordinates: [req.body.longitude, req.body.latitude] 
+    }
+
+    Establishment
+        .findByIdAndUpdate(req.params.id, establishment)
+        .then(() => {
+            res.redirect('/establishment')
         })
         .catch(error => next(error));
 }

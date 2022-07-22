@@ -10,7 +10,12 @@ body, html{
     padding: 30px 7.5%;
 }
 
-.bg-success, .btn-success, .form-check-input:checked{
+.bg-success, .bg-outline-success, .btn-success, .form-check-input:checked{
+    background-color: #00a082!important;
+    border-color: #00a082!important;
+}
+
+.btn-outline-success:hover {
     background-color: #00a082!important;
     border-color: #00a082!important;
 }
@@ -65,4 +70,21 @@ footer {
 
 .custom-dimension{
     height: 35vh;
+}
+
+.btn {
+    --bs-btn-padding-x: 0.55rem;
+}
+
+.custom-currency::after{
+    content: '€';
+}
+
+.height-fit-custom{
+    height: fit-content;
+}
+
+.custom-product-dimensions{
+    width: 35rem;
+    height: 15rem;
 }

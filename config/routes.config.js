@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { auth, info, user, establishment } = require('../controllers');
+const { auth, info, user, establishment, product } = require('../controllers');
 const { secure } = require('../middlewares')
 
 router.get('/', (req, res) => {
@@ -38,8 +38,15 @@ router.post('/users/:id/update', secure.isAuthenticated, user.updateUser);
 router.get('/establishment', secure.isAuthenticated, secure.isAdmin, establishment.getEstablishments);
 router.get('/establishment/filter-search', secure.isAuthenticated, secure.isAdmin, establishment.filterEstablishments);
 router.get('/establishment/create', secure.isAuthenticated, secure.isAdmin, establishment.create);
-router.get('/establishment/:id', secure.isAuthenticated, secure.isAdmin, establishment.getEstablishment);
-
+router.get('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, establishment.update);
+router.post('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, establishment.doUpdate);
 router.post('/establishment/create', secure.isAuthenticated, secure.isAdmin, establishment.doCreate);
+
+//Product
+router.get('/product/:idEstablishment/create', secure.isAuthenticated, secure.isAdmin, product.create);
+router.get('/product/:ididEstablishment/:idProduct/update', secure.isAuthenticated, secure.isAdmin, product.update);
+router.post('/product/:idEstablishment/create', secure.isAuthenticated, secure.isAdmin, product.doCreate);
+router.post('/product/:idEstablishment/:idProduct/update', secure.isAuthenticated, secure.isAdmin, product.doUpdate);
+router.post('/product/:idEstablishment/:idProduct/delete', secure.isAuthenticated, secure.isAdmin, product.doDelete);
 
 module.exports = router;
