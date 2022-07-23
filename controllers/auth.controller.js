@@ -73,3 +73,10 @@ module.exports.doLogin = (req, res, next) => {
         })
         .catch(error => next(error));
 }
+
+module.exports.logOut = (req, res, next) => {
+    if (req.session) {
+        req.session.destroy();
+        res.redirect('/login');
+    }
+}

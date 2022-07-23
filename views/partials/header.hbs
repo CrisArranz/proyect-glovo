@@ -17,7 +17,11 @@
                         <li><a class="dropdown-item" href="/payments">Gestionar Métodos de Pago</a></li>
                         {{#if currentUser.isAdmin}}<li><a class="dropdown-item" href="/establishment">Gestionar establecimientos</a></li>{{/if}}
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/logout">Desconectar</a></li>
+                        <li>
+                            <form action="/logout" method="POST">
+                                <button class="dropdown-item" type="submit">Desconectar</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <div class="btn-group">

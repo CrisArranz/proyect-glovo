@@ -30,6 +30,10 @@ router.post('/login', auth.doLogin);
 router.get('/register', auth.register);
 router.post('/register', auth.doRegister);
 
+//LogOut
+
+router.post('/logout', auth.logOut);
+
 //Users details
 router.get('/users/:id', secure.isAuthenticated, user.getUser);
 router.post('/users/:id/update', secure.isAuthenticated, user.updateUser); 
@@ -49,5 +53,7 @@ router.get('/product/:ididEstablishment/:idProduct/update', secure.isAuthenticat
 router.post('/product/:idEstablishment/create', secure.isAuthenticated, secure.isAdmin, product.doCreate);
 router.post('/product/:idEstablishment/:idProduct/update', secure.isAuthenticated, secure.isAdmin, product.doUpdate);
 router.post('/product/:idEstablishment/:idProduct/delete', secure.isAuthenticated, secure.isAdmin, product.doDelete);
+
+
 
 module.exports = router;
