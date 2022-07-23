@@ -24,6 +24,10 @@ body, html{
     color: #00a082!important;
 }
 
+.dropdown-item:active {
+    background-color: #00a082!important;
+}
+
 .nav-link{
     color: #00a082;
 }
