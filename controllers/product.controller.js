@@ -68,7 +68,6 @@ module.exports.doUpdate = (req, res, next) => {
 }
 
 module.exports.doDelete = (req, res, next) => {
-   
     Product
       .findByIdAndDelete(req.params.idProduct)
       .then(() => res.redirect(`/establishment/${req.params.idEstablishment}/update`))

@@ -40,6 +40,7 @@ router.get('/establishment/filter-search', secure.isAuthenticated, secure.isAdmi
 router.get('/establishment/create', secure.isAuthenticated, secure.isAdmin, establishment.create);
 router.get('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, establishment.update);
 router.post('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, establishment.doUpdate);
+router.post('/establishment/:id/delete', secure.isAuthenticated, secure.isAdmin, establishment.doDelete);
 router.post('/establishment/create', secure.isAuthenticated, secure.isAdmin, establishment.doCreate);
 
 //Product

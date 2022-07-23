@@ -55,6 +55,17 @@ module.exports.doUpdate = (req, res, next) => {
         .catch(error => next(error));
 }
 
+module.exports.doDelete = (req, res, next) => {
+    Establishment
+      .findByIdAndDelete(req.params.id)
+      .then(() => {
+        return Product
+            .deleteMany({idEstablishment: req.params.id})
+            .then(() => res.redirect(`/establishment`))
+      })
+      .catch(error => next(error));
+}
+
 module.exports.create = (req, res, next) => {
     res.locals.hideHeader = true;
     res.render('establishment/new');

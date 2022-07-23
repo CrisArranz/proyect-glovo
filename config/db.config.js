@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1/glovo');
+const ATLAS_CONNECTION = process.env.DATABASE_ATLAS_URI || 'mongodb://127.0.0.1/glovo'
+
+mongoose.connect(ATLAS_CONNECTION);
 mongoose.connection.on('connected', () => console.info('Mongoose default connection open'));
 mongoose.connection.on('error', err => console.info(`Mongoose default connection error: ${err}`));
 mongoose.connection.on('disconnected', () => console.info('Mongoose default connection disconnected'));

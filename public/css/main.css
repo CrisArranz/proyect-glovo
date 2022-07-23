@@ -20,6 +20,10 @@ body, html{
     border-color: #00a082!important;
 }
 
+.text-success{
+    color: #00a082!important;
+}
+
 .nav-link{
     color: #00a082;
 }
@@ -84,7 +88,7 @@ footer {
     height: fit-content;
 }
 
-.custom-product-dimensions{
-    width: 35rem;
+.custom-img-dimensions{
+    width: 15rem;
     height: 15rem;
 }
