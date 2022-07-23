@@ -20,7 +20,7 @@ const establishmentSchema = new Schema({
         }
     },
     foodType: {
-        type: Object
+        type: [String]
     },
     location: {
         type: {

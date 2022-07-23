@@ -45,6 +45,7 @@ module.exports.login = (req, res, next) => {
 module.exports.doLogin = (req, res, next) => {
 
     function renderInvalidLogin(){
+        res.locals.hideHeader = true;
         res.status(400).render('auth/login', {
             errors: { password: 'Username or password invalid' },
             user: req.body

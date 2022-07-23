@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-4">
             <h2 class="mb-4">Nuevo Producto</h2>
-            <form action="/product/{{idEstablishment}}/create" method="POST">
+            <form action="/product/{{establishment._id}}/create" method="POST">
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>
                     <input name="name" type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" placeholder="Nombre producto..." value="{{product.name}}" />

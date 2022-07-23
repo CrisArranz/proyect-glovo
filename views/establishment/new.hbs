@@ -19,31 +19,31 @@
                         </div>
                         <div class="col-7">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="types" value="american" />
+                                <input class="form-check-input" type="checkbox" name="foodType" value="american" {{#if establishment}}{{#if (inSelection establishment.foodType 'american')}}checked{{/if}}{{/if}} />
                                 <label class="form-check-label"><i class="fa-solid fa-burger fa-fw" data-bs-toggle="tooltip" data-bs-title="Americano"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="types" value="asian" />
+                                <input class="form-check-input" type="checkbox" name="foodType" value="asian" {{#if establishment}}{{#if (inSelection establishment.foodType 'asian')}}checked{{/if}}{{/if}} />
                                 <label class="form-check-label"><i class="fa-solid fa-bowl-rice fa-fw" data-bs-toggle="tooltip" data-bs-title="Asiático"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="types" value="italian" />
+                                <input class="form-check-input" type="checkbox" name="foodType" value="italian" {{#if establishment}}{{#if (inSelection establishment.foodType 'italian')}}checked{{/if}}{{/if}} />
                                 <label class="form-check-label"><i class="fa-solid fa-pizza-slice fa-fw" data-bs-toggle="tooltip" data-bs-title="Italiano"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="types" value="spanish" />
-                                <label class="form-check-label"><i class="fa-solid fa-bacon fa-fw" data-bs-toggle="tooltip" data-bs-title="Español"></i></label>
+                                <input class="form-check-input" type="checkbox" name="foodType" value="spanish" {{#if establishment}}{{#if (inSelection establishment.foodType 'spanish')}}checked{{/if}}{{/if}} />
+                                <label class="form-check-label"><i class="fa-solid fa-bacon fa-fw" data-bs-toggle="tooltip" data-bs-title="Española"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="types" value="mexican" />
+                                <input class="form-check-input" type="checkbox" name="foodType" value="mexican" {{#if establishment}}{{#if (inSelection establishment.foodType 'mexican')}}checked{{/if}}{{/if}} />
                                 <label class="form-check-label"><i class="fa-solid fa-pepper-hot fa-fw" data-bs-toggle="tooltip" data-bs-title="Mejicano"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="types" value="vegan" />
+                                <input class="form-check-input" type="checkbox" name="foodType" value="vegan" {{#if establishment}}{{#if (inSelection establishment.foodType 'vegan')}}checked{{/if}}{{/if}} />
                                 <label class="form-check-label"><i class="fa-solid fa-wheat-awn fa-fw" data-bs-toggle="tooltip" data-bs-title="Vegano"></i></label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="types" value="seafood" />
+                                <input class="form-check-input" type="checkbox" name="foodType" value="seafood" {{#if establishment}}{{#if (inSelection establishment.foodType 'seafood')}}checked{{/if}}{{/if}} />
                                 <label class="form-check-label"><i class="fa-solid fa-shrimp fa-fw" data-bs-toggle="tooltip" data-bs-title="Marisco"></i></label>
                             </div>
                         </div>

@@ -31,7 +31,6 @@ router.get('/register', auth.register);
 router.post('/register', auth.doRegister);
 
 //LogOut
-
 router.post('/logout', auth.logOut);
 
 //Users details

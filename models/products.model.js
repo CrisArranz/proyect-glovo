@@ -22,6 +22,12 @@ const productSchema = new Schema({
     price: {
         type: Number
     },
+    type: {
+        type: String
+    },
+    cluster: {
+        type: String
+    },
     idEstablishment: {
         type: Schema.Types.ObjectId,
         required: true,

@@ -1,18 +1,29 @@
 const mongoose = require('mongoose');
-const { Product } = require('../models');
+const { Establishment, Product } = require('../models');
 
 module.exports.create = (req, res, next) => {
     res.locals.hideHeader = true;
-    res.render('product/new', {idEstablishment: req.params.idEstablishment});
+    Establishment
+        .findById(req.params.idEstablishment)
+        .then(establishment => {
+            res.render('product/new', { establishment })
+        })
+        .catch(error => next(error))
 }
 
 module.exports.doCreate = (req, res, next) => {
 
     function renderWithErrors(errors){
-        res.status(400).render(`product/${req.params.id}/create`, { 
-            errors, 
-            product: req.body 
+        Establishment
+        .findById(req.params.idEstablishment)
+        .then(establishment => {
+            res.status(400).render(`product/new`, { 
+                errors, 
+                product: req.body,
+                establishment
+            })
         })
+        .catch(error => next(error))
     }
     
     const product = { name, photo, lastPrice } = req.body;
@@ -44,7 +55,7 @@ module.exports.update = (req, res, next) => {
 module.exports.doUpdate = (req, res, next) => {
 
     function renderWithErrors(errors){
-        res.status(400).render(`product/${req.params.idEstablishment}/${req.params.idProduct}/update`, { 
+        res.status(400).render(`product/detail`, { 
             errors, 
             product: req.body 
         })

@@ -1,7 +1,5 @@
 require('dotenv/config');
 const express = require("express");
-const hbs = require('hbs');
-const path = require('path');
 
 const app = express();
 
@@ -9,12 +7,11 @@ const app = express();
 app.set("views", __dirname + "/views");
 app.set("view engine", "hbs");
 
-hbs.registerPartials(path.join(__dirname, 'views/partials'));
-
 app.use(express.static(`${__dirname}/public`));
 app.use(express.urlencoded({ extended: false }));
 
 require('./config/db.config');
+require('./config/hbs.config');
 
 const { session, loadUser } = require('./config/session.config');
 app.use(session);
@@ -29,6 +26,7 @@ app.use((req, res, next) => {
 
 app.use((error, req, res, next) => {
     console.error(error);
+    res.locals.hideHeader = true;
     const message = error.message;
     const metadata = app.get('env') === 'development' ? error : {};
     const status = error.status || 500;

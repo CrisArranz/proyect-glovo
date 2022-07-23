@@ -36,11 +36,7 @@ module.exports.update = (req, res, next) => {
 module.exports.doUpdate = (req, res, next) => {
     res.locals.hideHeader = true;
 
-    const establishment = { photo, types } = req.body;
-    establishment.foodType = establishment.types.reduce((types, type) => {
-        types[type] = true;
-        return types;
-    }, {})
+    const establishment = { photo, foodType } = req.body;
 
     establishment.location = { 
         type: 'Point', 
@@ -74,17 +70,13 @@ module.exports.create = (req, res, next) => {
 module.exports.doCreate = (req, res, next) => {
 
     function renderWithErrors(errors){
-        res.status(400).render('establishment/create', { 
+        res.status(400).render('establishment/new', { 
             errors, 
             establishment: req.body 
         })
     }
     
     const establishment = { name, photo, types } = req.body;
-    establishment.foodType = establishment.types.reduce((types, type) => {
-        types[type] = true;
-        return types;
-    }, {})
 
     establishment.location = { 
         type: 'Point', 
