@@ -31,7 +31,7 @@ const productSchema = new Schema({
     idEstablishment: {
         type: Schema.Types.ObjectId,
         required: true,
-        ref: "Establishment"
+        ref: "establishment"
     }
 })
 

@@ -48,6 +48,7 @@ module.exports.update = (req, res, next) => {
 
     Product
         .findById(req.params.idProduct)
+        .populate('idEstablishment')
         .then(product => res.render('product/detail', { product }))
         .catch(error => next(error));
 }
@@ -55,6 +56,7 @@ module.exports.update = (req, res, next) => {
 module.exports.doUpdate = (req, res, next) => {
 
     function renderWithErrors(errors){
+        res.locals.hideHeader = true;
         res.status(400).render(`product/detail`, { 
             errors, 
             product: req.body 

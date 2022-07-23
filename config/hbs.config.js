@@ -10,3 +10,7 @@ hbs.registerHelper('isDefined', function (value) {
 hbs.registerHelper('inSelection', function (arrayTypes, type) {
     return arrayTypes.includes(type);
 });
+
+hbs.registerHelper('isSame', function (value, selectValue) {
+    return value === selectValue;
+});
