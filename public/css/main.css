@@ -96,3 +96,12 @@ footer {
     width: 15rem;
     height: 15rem;
 }
+
+.bg-custom-colaborate{
+    background-color: rgba(211, 255, 240, 0.712);
+}
+
+.img-size-product-custom{
+    width: 2.5rem;
+    height: 2.5rem;
+}

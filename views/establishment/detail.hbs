@@ -104,30 +104,43 @@
                 <div class="col-11 mt-5">
                     <div class="row">
                         {{#if products}}
-                            {{#each products}}
-                                <div class="col-3 d-flex align-items-center">
-                                    <a class="custom-img-dimensions" href="/product/{{this.idEstablishment}}/{{this._id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
-                                        <div class="card h-100 w-100">
-                                            <img src="{{this.photo}}" class="card-img h-100 w-100" alt="{{this.name}}">
-                                            <div class="card-img-overlay d-flex flex-column justify-content-between">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <h5 class="card-title text-success">{{this.name}}</h5>
-                                                        <p class="card-text custom-currency text-success">{{this.price}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-12 d-flex justify-content-end">
-                                                        <form action="/product/{{this.idEstablishment}}/{{this._id}}/delete" method="POST" >
-                                                            <button type="submit" class="btn btn-link p-0 ps-1 pe-1 text-success" data-bs-toggle="tooltip" data-bs-title="Eliminar producto"><i class="fa-solid fa-trash fa-fw"></i></button>
-                                                        </form>
+                            <div class="accordion" id="accordionProducts">
+                                {{#each products}}
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="heading{{@key}}">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
+                                                {{this.[0].cluster}}
+                                            </button>
+                                        </h2>
+                                        {{#each this}}
+                                            <div id="collapse{{this.keyCluster}}" class="accordion-collapse collapse" aria-labelledby="heading{{this.keyCluster}}" data-bs-parent="#accordionProducts">
+                                                <div class="accordion-body mb-3 mt-3">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-3 d-flex justify-content-center">
+                                                            <a class="w-100 d-flex justify-content-center" href="/product/{{this.idEstablishment}}/{{this._id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
+                                                                <img class="img-size-product-custom" src="{{this.photo}}" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <a class="w-100 d-flex justify-content-center" href="/product/{{this.idEstablishment}}/{{this._id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
+                                                                {{this.name}}
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-3 text-center custom-currency">
+                                                            {{this.price}}
+                                                        </div>
+                                                        <div class="col-3 d-flex justify-content-center">
+                                                            <form action="/product/{{this.idEstablishment}}/{{this._id}}/delete" method="POST" >
+                                                                <button type="submit" class="btn btn-link p-0 ps-1 pe-1 text-success" data-bs-toggle="tooltip" data-bs-title="Eliminar producto"><i class="fa-solid fa-trash fa-fw"></i></button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            {{/each}}
+                                        {{/each}}
+                                    </div>
+                                {{/each}}
+                            </div>
                         {{else}}
                             <div class="col-12 d-flex justify-content-center custom-dimension">No tenemos ningún producto para este establecimiento.</div>
                         {{/if}}

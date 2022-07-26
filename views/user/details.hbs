@@ -14,8 +14,7 @@
                     <input type="text" name="phone" class="form-control {{#if errors.phone }}is-invalid{{/if}}" placeholder="Telefono" value="{{user.phone}}" />
                     <div class="invalid-feedback mt-2">{{errors.phone}}</div>
                 </div>
-                <a class="btn btn-link pb-0 pt-0 ps-0" href="/users/{{user._id}}/change-password">¿Quieres cambiar tu contraseña?</a>
-                <a class="btn btn-link pb-0 pt-0 ps-0 mb-4" href="/payments/{{user._id}}">¿Quieres admnistrar tus métodos de pago?</a>
+                <a class="btn btn-link pb-0 pt-0 ps-0 mb-4" href="/users/{{user._id}}/change-password">¿Quieres cambiar tu contraseña?</a>
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-success">Modificar Usuario</button>
                 </div>

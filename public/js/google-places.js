@@ -1,5 +1,6 @@
 function initGooglePlaces() {
-    const inputLocationEstablishment = document.querySelector('.google-places-finder-establishments');
+    
+    const inputLocationEstablishment = document.querySelector('.google-places-finder-establishments') || document.querySelector('.google-places-finder');
     const options = {
         componentRestrictions: {country: 'es'},
         fields: ['address_components', 'geometry', 'icon', 'name'],
