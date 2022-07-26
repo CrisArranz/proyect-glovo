@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        required: 'The product name is required'
     },
     photo: {
         type: String,
@@ -20,13 +21,15 @@ const productSchema = new Schema({
         }
     },
     price: {
-        type: Number
+        type: Number,
+        required: 'The price is required'
     },
     type: {
         type: String
     },
     cluster: {
-        type: String
+        type: String,
+        required: 'The category is required'
     },
     idEstablishment: {
         type: Schema.Types.ObjectId,
