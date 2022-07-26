@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const establishmentSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        required: 'The establishment name is required'
     },
     photo: {
         type: String,
@@ -22,6 +23,10 @@ const establishmentSchema = new Schema({
     foodType: {
         type: [String]
     },
+    address: {
+        type: String,
+        required: 'The address is required'
+    },
     location: {
         type: {
             type: String,
@@ -29,8 +34,9 @@ const establishmentSchema = new Schema({
         },
         coordinates: [Number]
     }
-})
+});
+
+establishmentSchema.index({ location: '2dsphere' });
 
 const Establishment = mongoose.model('establishment', establishmentSchema);
-
 module.exports = Establishment;

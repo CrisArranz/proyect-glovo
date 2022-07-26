@@ -14,7 +14,7 @@ module.exports.filterEstablishments = (req, res, next) => {
     const { search } = req.query;
 
     Establishment
-      .find({name: new RegExp(search)})
+      .find({name: new RegExp(search , 'i')})
       .then(establishment => res.render('establishment/list' , { establishment, search }))
       .catch(error => next(error));
 }
@@ -36,11 +36,12 @@ module.exports.update = (req, res, next) => {
 module.exports.doUpdate = (req, res, next) => {
     res.locals.hideHeader = true;
 
-    const establishment = { photo, foodType } = req.body;
+    const establishment = { photo, foodType, address } = req.body;
+    const { longitude, latitude } = req.body;
 
     establishment.location = { 
         type: 'Point', 
-        coordinates: [req.body.longitude, req.body.latitude] 
+        coordinates: [longitude, latitude] 
     }
 
     Establishment
@@ -70,17 +71,19 @@ module.exports.create = (req, res, next) => {
 module.exports.doCreate = (req, res, next) => {
 
     function renderWithErrors(errors){
+        res.locals.hideHeader = true;
         res.status(400).render('establishment/new', { 
             errors, 
             establishment: req.body 
         })
     }
     
-    const establishment = { name, photo, types } = req.body;
+    const establishment = { name, photo, foodType, address } = req.body;
+    const { longitude, latitude } = req.body;
 
     establishment.location = { 
         type: 'Point', 
-        coordinates: [req.body.longitude, req.body.latitude] 
+        coordinates: [longitude, latitude] 
     }
 
     Establishment

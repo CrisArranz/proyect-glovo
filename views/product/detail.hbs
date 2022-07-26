@@ -26,6 +26,15 @@
                     {{/if}}
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Categoría</label>
+                    <input name="cluster" type="text" class="form-control {{#if errors.cluster }}is-invalid{{/if}}" value="{{product.cluster}}" placeholder="Categoria..." />
+                    {{#if errors.cluster}}
+                        <div class="invalid-feedback">
+                            {{errors.cluster}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
                     <label class="form-label">Tipo de producto</label>
                     <select name="type" class="form-select">
                         {{#each product.idEstablishment.foodType}}

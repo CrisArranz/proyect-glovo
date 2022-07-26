@@ -23,10 +23,19 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Precio</label>
-                    <input name="lastPrice" type="text" class="form-control {{#if errors.price}}is-invalid{{/if}}" value="{{product.price}}" placeholder="Precio..." />
+                    <input name="lastPrice" type="text" class="form-control {{#if errors.price }}is-invalid{{/if}}" value="{{product.price}}" placeholder="Precio..." />
                     {{#if errors.price}}
                         <div class="invalid-feedback">
                             {{errors.price}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Categoría</label>
+                    <input name="cluster" type="text" class="form-control {{#if errors.cluster }}is-invalid{{/if}}" value="{{product.cluster}}" placeholder="Categoria..." />
+                    {{#if errors.cluster}}
+                        <div class="invalid-feedback">
+                            {{errors.cluster}}
                         </div>
                     {{/if}}
                 </div>

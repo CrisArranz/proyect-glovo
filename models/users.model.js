@@ -36,6 +36,9 @@ const userSchema = new Schema({
         required: 'User password is required',
         match: [PASSWORD_PATTERN, 'The password need at least 8 chars']
     },
+    keyFoods:{
+        type: [String]
+    },
     isAdmin: {
         type: Boolean
     }

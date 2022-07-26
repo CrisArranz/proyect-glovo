@@ -77,28 +77,19 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-5">
+                            <div class="col-10">
                                 <div class="mb-3">
-                                    <label class="form-label">Longitud</label>
-                                    <input name="longitude" type="text" class="form-control {{#if errors.longitude}}is-invalid{{/if}}" value="{{establishment.location.coordinates.[0]}}" placeholder="Longitud..." />
-                                    {{#if errors.longitude}}
+                                    <label class="form-label">Dirección</label>
+                                    <input name="address" type="text" class="form-control google-places-finder-establishments {{#if errors.address}}is-invalid{{/if}}" value="{{establishment.address}}" placeholder="Direccion..." />
+                                    {{#if errors.address}}
                                         <div class="invalid-feedback">
-                                            {{errors.longitude}}
+                                            {{errors.address}}
                                         </div>
                                     {{/if}}
                                 </div>
                             </div>
-                            <div class="col-5">
-                                <div class="mb-3">
-                                    <label class="form-label">Latitud</label>
-                                    <input name="latitude" type="text" class="form-control {{#if errors.latitude}}is-invalid{{/if}}" value="{{establishment.location.coordinates.[1]}}" placeholder="Latitud..." />
-                                    {{#if errors.latitude}}
-                                        <div class="invalid-feedback">
-                                            {{errors.latitude}}
-                                        </div>
-                                    {{/if}}
-                                </div>
-                            </div>
+                            <input name="longitude" type="hidden" class="form-control" value="{{establishment.location.coordinates.[0]}}"/>
+                            <input name="latitude" type="hidden" class="form-control" value="{{establishment.location.coordinates.[1]}}"/>
                         </div>
                         <div class="d-flex flex-column align-items-center mt-5">
                             <button type="submit" class="btn btn-outline-success">Modificar Establecimiento</button>
