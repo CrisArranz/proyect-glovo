@@ -1,0 +1,57 @@
+<div class="container h-75 d-flex flex-column justify-content-around">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h2 class="mb-4">Nuevo Método de Pago</h2>
+            <form action="/payments/{{idUser}}/create" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Nombre en la tarjeta</label>
+                    <input name="cardHolder" type="text" class="form-control {{#if errors.cardHolder }}is-invalid{{/if}}" placeholder="Nombre en la tarjeta..." value="{{ payment.cardHolder }}" />
+                    {{#if errors.cardHolder}}
+                        <div class="invalid-feedback">
+                            {{errors.cardHolder}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Número de la tarjeta</label>
+                    <input name="cardNumber" type="text" class="form-control {{#if errors.cardNumber }}is-invalid{{/if}}" placeholder="Número de la tarjeta..." value="{{ payment.cardNumber }}" />
+                    {{#if errors.cardNumber}}
+                        <div class="invalid-feedback">
+                            {{errors.cardNumber}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Fecha de expiracion</label>
+                    <input name="expirationDate" type="text" class="form-control {{#if errors.expirationDate }}is-invalid{{/if}}" placeholder="Fecha de expiracion..." value="{{ payment.expirationDate }}" />
+                    {{#if errors.expirationDate}}
+                        <div class="invalid-feedback">
+                            {{errors.expirationDate}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">CCV</label>
+                    <input name="ccv" type="text" class="form-control {{#if errors.ccv }}is-invalid{{/if}}" placeholder="CCV..." value="{{ payment.ccv }}" />
+                    {{#if errors.ccv}}
+                        <div class="invalid-feedback">
+                            {{errors.ccv}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">País</label>
+                    <input name="country" type="text" class="form-control {{#if errors.country }}is-invalid{{/if}}" placeholder="País..." value="{{ payment.country }}" />
+                    {{#if errors.country}}
+                        <div class="invalid-feedback">
+                            {{errors.country}}
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -15,14 +15,14 @@ module.exports.doCreate = (req, res, next) => {
 
     function renderWithErrors(errors){
         Establishment
-        .findById(req.params.idEstablishment)
-        .then(establishment => {
-            res.status(400).render(`product/new`, { 
-                errors, 
-                product: req.body,
-                establishment
+            .findById(req.params.idEstablishment)
+            .then(establishment => {
+                res.status(400).render(`product/new`, { 
+                    errors, 
+                    product: req.body,
+                    establishment
+                })
             })
-        })
         .catch(error => next(error))
     }
     

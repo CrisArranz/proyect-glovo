@@ -9,18 +9,19 @@ module.exports.register = (req, res, next) => {
 module.exports.doRegister = (req, res, next) => {
 
     function renderWithErrors(errors){
+        res.locals.hideHeader = true; 
         res.status(400).render('auth/register', { 
             errors, 
             user: req.body 
         })
     }
 
-    const { username } = req.body;
+    const { email } = req.body;
     User
-        .findOne( { username } )
+        .findOne( { email } )
         .then(user => {
             if (user) {
-                renderWithErrors({ username: 'Username already exists' }) 
+                renderWithErrors({ email: 'Email already exists' }) 
             } else {
                 return User
                     .create(req.body)
@@ -52,10 +53,10 @@ module.exports.doLogin = (req, res, next) => {
         })
     }
 
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     User
-        .findOne({ username })
+        .findOne({ email })
         .then((user) => {
             if (!user) {
                 renderInvalidLogin();

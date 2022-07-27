@@ -1,0 +1,48 @@
+<div class="container {{#if payment }}{{else}}h-75{{/if}} mt-5 mb-5">
+    <div class="row h-100">
+        <div class="col-11 h-100">
+            <h2 class="mb-5">Métodos de Pago</h2>
+            {{#if payments}}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Num. Tarjeta</th>
+                            <th scope="col">Fecha Expira.</th>
+                            <th scope="col">Pais</th>
+                            <th scope="col">Activa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each payments }}
+                            <tr>
+                                <th scope="row"><i class="fa-solid fa-credit-card"></i></th>
+                                <td class="{{#if this.activate}}fw-bold{{/if}}">{{this.cardHolder}}</td>
+                                <td class="{{#if this.activate}}fw-bold{{/if}}">{{this.cardNumber}}</td>
+                                <td class="{{#if this.activate}}fw-bold{{/if}}">{{this.expirationDate}}</td>
+                                <td class="{{#if this.activate}}fw-bold{{/if}}">{{this.country}}</td>
+                                <td>
+                                    <form class="d-flex justify-content-center" action="/payments/{{idUser}}/{{this._id}}/update" method="POST">
+                                        <input class="form-check-input" name="activate" type="checkbox" value="{{#if this.activate}}false{{else}}true{{/if}}" hidden checked />
+                                        {{#if this.activate}}
+                                        {{else}}
+                                            <button class="btn btn-link p-0" type="submit" data-bs-toggle="tooltip" data-bs-title="Activar Método de pago"><i class="fa-solid fa-check"></i></button>
+                                        {{/if}}
+                                    </form>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            {{else}}
+                <div class="row h-75 align-items-center">
+                    <div class="col-12 d-flex justify-content-center">No tenemos ningún metodo de pago registrado.</div>
+                </div>
+            {{/if}}
+        </div>
+       <div class="col-1">
+            <a class="btn btn-success rounded-circle me-2" href="/payments/{{idUser}}/create" data-bs-toggle="tooltip" data-bs-title="Añadir método de pago"><i class="fa-regular fa-plus fa-fw"></i></a>
+        </div>
+    </div>
+</div>
