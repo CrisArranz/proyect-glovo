@@ -14,3 +14,7 @@ hbs.registerHelper('inSelection', function (arrayTypes, type) {
 hbs.registerHelper('isSame', function (value, selectValue) {
     return value === selectValue;
 });
+
+hbs.registerHelper('isObjectNotEmpty', function (objectNotEmpty) {
+    return Object.keys(objectNotEmpty).length;
+});
