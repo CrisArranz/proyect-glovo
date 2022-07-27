@@ -3,5 +3,6 @@ module.exports = {
     info: require('./info.controller'),
     user: require('./user.controller'),
     establishment: require('./establishment.controller'),
-    product: require('./product.controller')
+    product: require('./product.controller'),
+    order: require('./order.controller')
 }

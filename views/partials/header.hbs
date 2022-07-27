@@ -45,10 +45,14 @@
             <h1 class="text-center fw-bold fs-custom-first-banner">Comida y bebida a domicilio</h1>
             <p class="fs-custom-second-banner">¡Introduce tu dirección para llevartelo!</p>
             <div class="input-group mb-3">
-                <span class="input-group-text bg-success"><i class="fa-regular fa-flag fa-fw"></i></span>
-                <input type="text" name="address" class="form-control google-places-finder" placeholder="¿Cual es tu dirección?" />
-                <input type="hidden" name="latitude" class="form-control" />
-                <input type="hidden" name="longitude" class="form-control" />
+                <form class="w-100" action="/order/set-location" method="POST">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-success"><i class="fa-regular fa-flag fa-fw"></i></span>
+                        <input type="text" name="address" class="form-control google-places-finder" placeholder="¿Cual es tu dirección?" />
+                    </div>
+                    <input type="hidden" name="latitudeOrder" class="form-control" />
+                    <input type="hidden" name="longitudeOrder" class="form-control" />
+                </form>
             </div>
         </div>
     </div>

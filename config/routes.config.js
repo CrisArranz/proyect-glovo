@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { auth, info, user, establishment, product } = require('../controllers');
+const { auth, info, user, establishment, product, order } = require('../controllers');
 const { secure } = require('../middlewares')
 
 router.get('/', (req, res) => {
@@ -52,6 +52,9 @@ router.get('/product/:ididEstablishment/:idProduct/update', secure.isAuthenticat
 router.post('/product/:idEstablishment/create', secure.isAuthenticated, secure.isAdmin, product.doCreate);
 router.post('/product/:idEstablishment/:idProduct/update', secure.isAuthenticated, secure.isAdmin, product.doUpdate);
 router.post('/product/:idEstablishment/:idProduct/delete', secure.isAuthenticated, secure.isAdmin, product.doDelete);
+
+//Order
+router.post('/order/set-location', order.setLocation);
 
 
 
