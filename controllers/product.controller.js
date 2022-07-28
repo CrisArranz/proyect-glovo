@@ -14,6 +14,7 @@ module.exports.create = (req, res, next) => {
 module.exports.doCreate = (req, res, next) => {
 
     function renderWithErrors(errors){
+        res.locals.hideHeader = true;
         Establishment
             .findById(req.params.idEstablishment)
             .then(establishment => {
@@ -28,7 +29,7 @@ module.exports.doCreate = (req, res, next) => {
     
     const product = { name, photo, lastPrice } = req.body;
 
-    product.price = parseFloat(product.lastPrice);
+    product.price = product.lastPrice ? parseFloat(product.lastPrice) : '';
     product.idEstablishment = req.params.idEstablishment;
 
     Product

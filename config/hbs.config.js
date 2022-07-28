@@ -8,7 +8,7 @@ hbs.registerHelper('isDefined', function (value) {
 });
 
 hbs.registerHelper('inSelection', function (arrayTypes, type) {
-    return arrayTypes.includes(type);
+    return arrayTypes ? arrayTypes.includes(type) : false;
 });
 
 hbs.registerHelper('isSame', function (value, selectValue) {

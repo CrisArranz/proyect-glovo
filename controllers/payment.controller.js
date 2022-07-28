@@ -19,36 +19,43 @@ module.exports.doCreate = (req, res, next) => {
         res.locals.hideHeader = true;
         res.status(400).render(`payment/new`, { 
             errors, 
-            payment: req.body
+            payment: req.body,
+            idUser: req.params.idUser
         })
     }
     
     const payment = { cardHolder, cardNumber, expirationDate, ccv, country } = req.body;
-
     payment.idUser = req.params.idUser;
 
     Payment
-      .create(payment)
-      .then(() => res.redirect(`/payments/${req.params.idUser}`))
-      .catch(error => {
-        if (error instanceof mongoose.Error.ValidationError) {
-            renderWithErrors(error.errors);
-        } else {
-            next(error);
-        }
-      });
+        .find({idUser: req.params.idUser})
+        .then(paymentMethod => {
+            if (!paymentMethod.length) {
+                payment.activate = true;
+            }
+            return Payment
+                .create(payment)
+                .then(() => res.redirect(`/payments/${req.params.idUser}`))
+        })
+        .catch(error => {
+            if (error instanceof mongoose.Error.ValidationError) {
+                renderWithErrors(error.errors);
+            } else {
+                next(error);
+            }
+        });
 }
 
 module.exports.doUpdate = (req, res, next) => {
     res.locals.hideHeader = true;
 
-    const activated = { activate } = req.body;
+    const active = { activate } = req.body;
 
     Payment
-        .findOneAndUpdate(activated, { activate: false })
+        .updateMany(active, { activate: false })
         .then(() => {
             return Payment
-                .findByIdAndUpdate(req.params.idPayment, activated)
+                .findByIdAndUpdate(req.params.idPayment, active)
                 .then(() => res.redirect(`/payments/${req.params.idUser}`))
                 .catch(error => next(error))
         })

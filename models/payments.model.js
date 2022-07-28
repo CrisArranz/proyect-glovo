@@ -7,11 +7,11 @@ const CCV_PATTERN = /^[0-9]{3}$/;
 const paymentSchema = new Schema({
     cardHolder: {
         type: String,
-        required: 'The name is required'
+        required: 'Car Holder is required'
     },
     cardNumber: {
         type: String,
-        required: 'User email is required',
+        required: 'Car number is required',
         match: [CARD_NUMBER_PATTERN, 'Invalid card number']
     },
     expirationDate: {
@@ -21,7 +21,7 @@ const paymentSchema = new Schema({
     ccv: {
         type: String,
         required: 'CCV is required',
-        match: [CCV_PATTERN, 'The password need at least 3 chars']
+        match: [CCV_PATTERN, 'CCV only need 3 chars']
     },
     country:{
         type: String
