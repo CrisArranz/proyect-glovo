@@ -5,7 +5,7 @@ module.exports.getEstablishments = (req, res, next) => {
     res.locals.hideHeader = true;
     Establishment
         .find()
-        .then(establishment => res.render('establishment/list', { establishment }))
+        .then(establishment => res.render('establishment/list', { establishment, location: req.cookies.orderLocationCookie }))
         .catch(error => next(error));
 }
 
@@ -15,7 +15,7 @@ module.exports.filterEstablishments = (req, res, next) => {
 
     Establishment
       .find({name: new RegExp(search , 'i')})
-      .then(establishment => res.render('establishment/list' , { establishment, search }))
+      .then(establishment => res.render('establishment/list' , { establishment, search, location: req.cookies.orderLocationCookie }))
       .catch(error => next(error));
 }
 
@@ -39,7 +39,7 @@ module.exports.update = (req, res, next) => {
                         }
                         return products;
                     }, {})
-                    res.render('establishment/detail', { establishment, products })
+                    res.render('establishment/detail', { establishment, products, location: req.cookies.orderLocationCookie })
                 })
         })
         .catch(error => next(error));
@@ -78,7 +78,7 @@ module.exports.doDelete = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
     res.locals.hideHeader = true;
-    res.render('establishment/new');
+    res.render('establishment/new', { location: req.cookies.orderLocationCookie });
 }
 
 module.exports.doCreate = (req, res, next) => {
@@ -87,7 +87,8 @@ module.exports.doCreate = (req, res, next) => {
         res.locals.hideHeader = true;
         res.status(400).render('establishment/new', { 
             errors, 
-            establishment: req.body 
+            establishment: req.body,
+            location: req.cookies.orderLocationCookie
         })
     }
     

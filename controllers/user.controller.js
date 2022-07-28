@@ -6,7 +6,7 @@ module.exports.getUser = (req, res, next) => {
     User
         .findById(req.params.id)
         .then((user) => {
-            res.render('user/details', { user })
+            res.render('user/details', { user, location: req.cookies.orderLocationCookie })
         })
         .catch(error => next(error))
 }
@@ -16,7 +16,8 @@ module.exports.updateUser = (req, res, next) => {
     function renderWithErrors(errors){
         res.status(400).render('user/details', { 
             errors, 
-            user: req.body 
+            user: req.body, 
+            location: req.cookies.orderLocationCookie
         })
     }
     

@@ -1,7 +1,7 @@
-const { User } = require('../models')
+const { User } = require('../models');
 const expressSession = require('express-session');
 const mongoStore = require('connect-mongo');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const session = expressSession({
     secret: process.env.SESSION_SECRET || 'super secret',

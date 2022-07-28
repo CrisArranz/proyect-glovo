@@ -5,13 +5,13 @@ module.exports.getPaymentMethods = (req, res, next) => {
     res.locals.hideHeader = true;
     Payment
         .find({ idUser: req.params.idUser })
-        .then(payments => res.render('payment/list', { payments, idUser: req.params.idUser }))
+        .then(payments => res.render('payment/list', { payments, idUser: req.params.idUser, location: req.cookies.orderLocationCookie }))
         .catch(error => next(error))
 }
 
 module.exports.create = (req, res, next) => {
     res.locals.hideHeader = true;
-    res.render('payment/new', {idUser: req.params.idUser});
+    res.render('payment/new', { idUser: req.params.idUser, location: req.cookies.orderLocationCookie });
 }
 
 module.exports.doCreate = (req, res, next) => {
@@ -20,7 +20,8 @@ module.exports.doCreate = (req, res, next) => {
         res.status(400).render(`payment/new`, { 
             errors, 
             payment: req.body,
-            idUser: req.params.idUser
+            idUser: req.params.idUser, 
+            location: req.cookies.orderLocationCookie
         })
     }
     

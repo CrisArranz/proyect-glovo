@@ -105,3 +105,7 @@ footer {
     width: 4.5rem;
     height: 3.5rem;
 }
+
+.custom-align-center{
+    margin: 0 auto;
+}

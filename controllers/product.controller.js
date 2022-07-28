@@ -6,7 +6,7 @@ module.exports.create = (req, res, next) => {
     Establishment
         .findById(req.params.idEstablishment)
         .then(establishment => {
-            res.render('product/new', { establishment })
+            res.render('product/new', { establishment, location: req.cookies.orderLocationCookie })
         })
         .catch(error => next(error))
 }
@@ -21,7 +21,8 @@ module.exports.doCreate = (req, res, next) => {
                 res.status(400).render(`product/new`, { 
                     errors, 
                     product: req.body,
-                    establishment
+                    establishment, 
+                    location: req.cookies.orderLocationCookie
                 })
             })
         .catch(error => next(error))
@@ -50,7 +51,7 @@ module.exports.update = (req, res, next) => {
     Product
         .findById(req.params.idProduct)
         .populate('idEstablishment')
-        .then(product => res.render('product/detail', { product }))
+        .then(product => res.render('product/detail', { product, location: req.cookies.orderLocationCookie }))
         .catch(error => next(error));
 }
 
@@ -60,7 +61,8 @@ module.exports.doUpdate = (req, res, next) => {
         res.locals.hideHeader = true;
         res.status(400).render(`product/detail`, { 
             errors, 
-            product: req.body 
+            product: req.body, 
+            location: req.cookies.orderLocationCookie
         })
     }
     

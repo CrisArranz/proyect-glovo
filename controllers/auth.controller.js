@@ -3,7 +3,7 @@ const { User } = require("../models");
 
 module.exports.register = (req, res, next) => {
     res.locals.hideHeader = true; 
-    res.render('auth/register')
+    res.render('auth/register', { location: req.cookies.orderLocationCookie })
 }
 
 module.exports.doRegister = (req, res, next) => {
@@ -12,7 +12,8 @@ module.exports.doRegister = (req, res, next) => {
         res.locals.hideHeader = true; 
         res.status(400).render('auth/register', { 
             errors, 
-            user: req.body 
+            user: req.body,
+            location: req.cookies.orderLocationCookie
         })
     }
 
@@ -40,7 +41,7 @@ module.exports.doRegister = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
     res.locals.hideHeader = true;
-    res.render('auth/login');
+    res.render('auth/login', { location: req.cookies.orderLocationCookie });
 }
 
 module.exports.doLogin = (req, res, next) => {
@@ -49,7 +50,8 @@ module.exports.doLogin = (req, res, next) => {
         res.locals.hideHeader = true;
         res.status(400).render('auth/login', {
             errors: { password: 'Username or password invalid' },
-            user: req.body
+            user: req.body,
+            location: req.cookies.orderLocationCookie
         })
     }
 

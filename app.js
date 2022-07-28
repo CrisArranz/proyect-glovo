@@ -3,13 +3,13 @@ const express = require("express");
 const cookieParser = require('cookie-parser');
 
 const app = express();
-app.use(cookieParser());
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "hbs");
 
 app.use(express.static(`${__dirname}/public`));
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 require('./config/db.config');
 require('./config/hbs.config');

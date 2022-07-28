@@ -5,8 +5,8 @@ const { auth, info, user, establishment, product, order, payment } = require('..
 const { secure } = require('../middlewares')
 
 router.get('/', (req, res) => {
-    res.locals.hideHeader = res.locals.currentUser;
-    res.render('home');
+    res.locals.hideHeader = req.cookies.orderLocationCookie;
+    res.render('home', { location: req.cookies.orderLocationCookie });
 });
 
 //Info
