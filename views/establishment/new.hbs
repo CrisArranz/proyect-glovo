@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-4">
             <h2 class="mb-4">Nuevo Establecimiento</h2>
-            <form action="/establishment/create" method="POST">
+            <form action="/establishment/create" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>
                     <input name="name" type="text" class="form-control {{#if errors.name }}is-invalid{{/if}}" placeholder="Nombre establecimiento..." value="{{ establishment.name }}" />
@@ -56,7 +56,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Imagen</label>
-                    <input name="photo" type="text" class="form-control {{#if errors.photo }}is-invalid{{/if}}" value="{{establishment.photo}}" placeholder="URL..." />
+                    <input name="photo" type="file" class="form-control {{#if errors.photo }}is-invalid{{/if}}" value="{{establishment.photo}}" placeholder="URL..." />
                     {{#if errors.photo }}
                         <div class="invalid-feedback">
                             {{ errors.photo }}

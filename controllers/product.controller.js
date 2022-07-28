@@ -28,9 +28,11 @@ module.exports.doCreate = (req, res, next) => {
         .catch(error => next(error))
     }
     
-    const product = { name, photo, lastPrice } = req.body;
+    const product = { name, lastPrice } = req.body;
 
     product.price = product.lastPrice ? parseFloat(product.lastPrice) : '';
+
+    product.photo = req.file.path;
     product.idEstablishment = req.params.idEstablishment;
 
     Product
@@ -66,9 +68,10 @@ module.exports.doUpdate = (req, res, next) => {
         })
     }
     
-    const product = { photo, lastPrice } = req.body;
+    const product = { lastPrice } = req.body;
 
     product.price = parseFloat(product.lastPrice);
+    product.photo = req.file.path;
     product.idEstablishment = req.params.idEstablishment;
 
     Product

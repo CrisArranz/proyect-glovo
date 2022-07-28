@@ -49,9 +49,10 @@ module.exports.update = (req, res, next) => {
 module.exports.doUpdate = (req, res, next) => {
     res.locals.hideHeader = true;
 
-    const establishment = { photo, foodType, address } = req.body;
+    const establishment = { foodType, address } = req.body;
     const { longitude, latitude } = req.body;
 
+    establishment.photo = req.file.path;
     establishment.location = { 
         type: 'Point', 
         coordinates: [longitude, latitude] 
@@ -92,9 +93,10 @@ module.exports.doCreate = (req, res, next) => {
         })
     }
     
-    const establishment = { name, photo, foodType, address } = req.body;
+    const establishment = { name, foodType, address } = req.body;
     const { longitude, latitude } = req.body;
 
+    establishment.photo = req.file.path;
     establishment.location = { 
         type: 'Point', 
         coordinates: [longitude, latitude] 

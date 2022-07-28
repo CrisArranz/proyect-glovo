@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const upload = require('./multer.config');
 
 const { auth, info, user, establishment, product, order, payment } = require('../controllers');
 const { secure } = require('../middlewares')
@@ -48,15 +49,15 @@ router.get('/establishment', secure.isAuthenticated, secure.isAdmin, establishme
 router.get('/establishment/filter-search', secure.isAuthenticated, secure.isAdmin, establishment.filterEstablishments);
 router.get('/establishment/create', secure.isAuthenticated, secure.isAdmin, establishment.create);
 router.get('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, establishment.update);
-router.post('/establishment/create', secure.isAuthenticated, secure.isAdmin, establishment.doCreate);
-router.post('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, establishment.doUpdate);
+router.post('/establishment/create', secure.isAuthenticated, secure.isAdmin, upload.single('photo'), establishment.doCreate);
+router.post('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, upload.single('photo'), establishment.doUpdate);
 router.post('/establishment/:id/delete', secure.isAuthenticated, secure.isAdmin, establishment.doDelete);
 
 //Product
 router.get('/product/:idEstablishment/create', secure.isAuthenticated, secure.isAdmin, product.create);
 router.get('/product/:ididEstablishment/:idProduct/update', secure.isAuthenticated, secure.isAdmin, product.update);
-router.post('/product/:idEstablishment/create', secure.isAuthenticated, secure.isAdmin, product.doCreate);
-router.post('/product/:idEstablishment/:idProduct/update', secure.isAuthenticated, secure.isAdmin, product.doUpdate);
+router.post('/product/:idEstablishment/create', secure.isAuthenticated, secure.isAdmin, upload.single('photo'), product.doCreate);
+router.post('/product/:idEstablishment/:idProduct/update', secure.isAuthenticated, secure.isAdmin, upload.single('photo'), product.doUpdate);
 router.post('/product/:idEstablishment/:idProduct/delete', secure.isAuthenticated, secure.isAdmin, product.doDelete);
 
 //Order
