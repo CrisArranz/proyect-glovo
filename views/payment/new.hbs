@@ -14,7 +14,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Número de la tarjeta</label>
-                    <input name="cardNumber" type="text" class="form-control {{#if errors.cardNumber }}is-invalid{{/if}}" placeholder="Número de la tarjeta..." value="{{ payment.cardNumber }}" />
+                    <input name="cardNumber" type="text" class="form-control {{#if errors.cardNumber }}is-invalid{{/if}}" placeholder="Número de la tarjeta (MM/YY)..." value="{{ payment.cardNumber }}" />
                     {{#if errors.cardNumber}}
                         <div class="invalid-feedback">
                             {{errors.cardNumber}}
