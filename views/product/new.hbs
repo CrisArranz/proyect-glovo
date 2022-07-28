@@ -14,7 +14,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Imagen</label>
-                    <input name="photo" type="file" class="form-control {{#if errors.photo}}is-invalid{{/if}}" value="{{product.photo}}" placeholder="URL..." />
+                    <input name="photo" type="file" class="form-control {{#if errors.photo}}is-invalid{{/if}}" value="{{product.photo}}" />
                     {{#if errors.photo}}
                         <div class="invalid-feedback">
                             {{errors.photo}}

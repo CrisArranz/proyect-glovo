@@ -48,11 +48,18 @@ module.exports.update = (req, res, next) => {
 
 module.exports.doUpdate = (req, res, next) => {
     res.locals.hideHeader = true;
+    
+   
+    const { foodType, address } = req.body;
 
-    const establishment = { foodType, address } = req.body;
+    const establishment = { foodType, address };
+    
     const { longitude, latitude } = req.body;
 
-    establishment.photo = req.file.path;
+    if (req.file) {
+        establishment.photo = req.file.path;
+    }
+    
     establishment.location = { 
         type: 'Point', 
         coordinates: [longitude, latitude] 

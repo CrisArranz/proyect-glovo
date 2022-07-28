@@ -2,14 +2,14 @@
     <div class="row justify-content-center">
         <div class="col-4">
             <h2 class="mb-4">Modificar Producto</h2>
-            <form action="/product/{{product.idEstablishment._id}}/{{product._id}}/update" method="POST">
+            <form action="/product/{{product.idEstablishment._id}}/{{product._id}}/update" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>
                     <p class="form-control bg-light bg-gradient">{{product.name}}</p>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Imagen</label>
-                    <input name="photo" type="text" class="form-control {{#if errors.image}}is-invalid{{/if}}" value="{{product.photo}}" placeholder="URL..." />
+                    <input name="photo" type="file" class="form-control {{#if errors.image}}is-invalid{{/if}}" value="{{product.photo}}" />
                     {{#if errors.photo}}
                         <div class="invalid-feedback">
                             {{errors.photo}}
