@@ -5,5 +5,6 @@ module.exports = {
     establishment: require('./establishment.controller'),
     product: require('./product.controller'),
     order: require('./order.controller'),
-    payment: require('./payment.controller')
+    payment: require('./payment.controller'),
+    misc: require('./misc.controller')
 }

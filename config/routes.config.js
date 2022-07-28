@@ -2,13 +2,10 @@ const express = require("express");
 const router = express.Router();
 const upload = require('./multer.config');
 
-const { auth, info, user, establishment, product, order, payment } = require('../controllers');
+const { auth, info, user, establishment, product, order, payment, misc } = require('../controllers');
 const { secure } = require('../middlewares')
 
-router.get('/', (req, res) => {
-    res.locals.hideHeader = req.cookies.orderLocationCookie;
-    res.render('home', { location: req.cookies.orderLocationCookie });
-});
+router.get('/', misc.home);
 
 //Info
 router.get('/work-with-us', info.workWithUs);
@@ -62,6 +59,9 @@ router.post('/product/:idEstablishment/:idProduct/delete', secure.isAuthenticate
 
 //Order
 router.post('/order/set-location', order.setLocation);
+
+//Remove Location
+router.get('/remove-location', misc.removeLocation);
 
 
 
