@@ -8,7 +8,7 @@ const productSchema = new Schema({
     },
     photo: {
         type: String,
-        default: '/image/image-not-found.svg',
+        default: 'https://res.cloudinary.com/dp520ozjl/image/upload/v1659034965/glovo/dvyi5n3bxrymxwrrjgcf.png',
         validate: {
             validator: function(image){
                 try {

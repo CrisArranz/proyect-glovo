@@ -25,7 +25,9 @@ module.exports.doCreate = (req, res, next) => {
         })
     }
     
-    const payment = { cardHolder, cardNumber, expirationDate, ccv, country } = req.body;
+    const { cardHolder, cardNumber, expirationDate, ccv, country } = req.body;
+    const payment = { cardHolder, cardNumber, expirationDate, ccv, country };
+
     payment.idUser = req.params.idUser;
 
     Payment
@@ -50,7 +52,8 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.doUpdate = (req, res, next) => {
     res.locals.hideHeader = true;
 
-    const active = { activate } = req.body;
+    const { activate } = req.body;
+    const active = { activate };
 
     Payment
         .updateMany(active, { activate: false })

@@ -28,11 +28,16 @@ module.exports.doCreate = (req, res, next) => {
         .catch(error => next(error))
     }
     
-    const product = { name, lastPrice } = req.body;
+    const { name, lastPrice } = req.body;
+
+    const product = { name, lastPrice };
 
     product.price = product.lastPrice ? parseFloat(product.lastPrice) : '';
 
-    product.photo = req.file.path;
+    if (req.file) {
+        product.photo = req.file.path;
+    }
+
     product.idEstablishment = req.params.idEstablishment;
 
     Product
@@ -68,10 +73,15 @@ module.exports.doUpdate = (req, res, next) => {
         })
     }
     
-    const product = { lastPrice } = req.body;
+     const { lastPrice } = req.body;
+     const product = { lastPrice };
 
     product.price = parseFloat(product.lastPrice);
-    product.photo = req.file.path;
+
+    if (req.file) {
+        product.photo = req.file.path;
+    }
+    
     product.idEstablishment = req.params.idEstablishment;
 
     Product

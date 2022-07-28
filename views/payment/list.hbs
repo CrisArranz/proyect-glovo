@@ -18,10 +18,10 @@
                         {{#each payments }}
                             <tr>
                                 <th scope="row"><i class="fa-solid fa-credit-card"></i></th>
-                                <td class="{{#if this.activate}}fw-bold{{/if}}">{{this.cardHolder}}</td>
-                                <td class="{{#if this.activate}}fw-bold{{/if}}">{{this.cardNumber}}</td>
-                                <td class="{{#if this.activate}}fw-bold{{/if}}">{{this.expirationDate}}</td>
-                                <td class="{{#if this.activate}}fw-bold{{/if}}">{{this.country}}</td>
+                                <td class="{{#if this.activate}}fw-bold text-success{{/if}}">{{this.cardHolder}}</td>
+                                <td class="{{#if this.activate}}fw-bold text-success{{/if}}">{{this.cardNumber}}</td>
+                                <td class="{{#if this.activate}}fw-bold text-success{{/if}}">{{this.expirationDate}}</td>
+                                <td class="{{#if this.activate}}fw-bold text-success{{/if}}">{{this.country}}</td>
                                 <td>
                                     <form class="d-flex justify-content-center" action="/payments/{{idUser}}/{{this._id}}/update" method="POST">
                                         <input class="form-check-input" name="activate" type="checkbox" value="{{#if this.activate}}false{{else}}true{{/if}}" hidden checked />

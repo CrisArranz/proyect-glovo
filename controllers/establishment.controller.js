@@ -100,10 +100,14 @@ module.exports.doCreate = (req, res, next) => {
         })
     }
     
-    const establishment = { name, foodType, address } = req.body;
+    const { name, foodType, address } = req.body;
+    const establishment = { name, foodType, address };
     const { longitude, latitude } = req.body;
 
-    establishment.photo = req.file.path;
+    if (req.file) {
+        establishment.photo = req.file.path;
+    }
+    
     establishment.location = { 
         type: 'Point', 
         coordinates: [longitude, latitude] 
