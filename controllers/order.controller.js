@@ -10,3 +10,8 @@ module.exports.setLocation = (req, res, next) => {
     })
     return res.redirect('/');
 }
+
+module.exports.create = (req, res, next) => {
+    res.locals.hideHeader = true;
+    res.render('home', { location: req.cookies.orderLocationCookie });
+}

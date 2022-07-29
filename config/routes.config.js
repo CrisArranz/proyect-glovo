@@ -59,6 +59,7 @@ router.post('/product/:idEstablishment/:idProduct/delete', secure.isAuthenticate
 
 //Order
 router.post('/order/set-location', order.setLocation);
+router.get('/order/:idEstablishment/create', order.create);
 
 //Remove Location
 router.get('/remove-location', misc.removeLocation);

@@ -1,0 +1,24 @@
+<div class="container mt-5 {{#if establishments }}{{else}}h-75{{/if}}">
+    {{#if establishments }}
+        <h3>¿Quieres comer?</h3>
+        <h4>{{#if location }}Estos son tus restaurantes cercanos{{else}}Selecciona uno de nuestros restaurantes{{/if}}</h4>
+        <div class="row">
+            {{#each establishments }}
+                <div class="col-3 custom-dimension mt-5 mb-5">
+                    <a class="d-flex justify-content-center align-items-center custom-img-dimensions custom-align-center" href="/order/{{this.id}}/create" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
+                        <div class="img-hover-zoom card h-100 w-100 overflow-hidden">
+                            <img src="{{this.photo}}" class="card-img h-100 w-100" alt="{{this.name}}">
+                        </div>
+                    </a>
+                    <div class="w-75 custom-align-center">Localizacion: <span class="fst-italic fw-bold">{{this.address}}</span></div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="row h-100 align-content-center">
+            <div class="col-12 text-center">
+                No tenemos ningún establecimiento registrado.
+            </div>
+        </div>
+    {{/if}}
+</div>
