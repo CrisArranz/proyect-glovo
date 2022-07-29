@@ -28,9 +28,9 @@ module.exports.doCreate = (req, res, next) => {
         .catch(error => next(error))
     }
     
-    const { name, lastPrice } = req.body;
+    const { name, lastPrice, cluster } = req.body;
 
-    const product = { name, lastPrice };
+    const product = { name, lastPrice, cluster };
 
     product.price = product.lastPrice ? parseFloat(product.lastPrice) : '';
 

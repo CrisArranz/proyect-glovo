@@ -50,11 +50,9 @@ module.exports.doUpdate = (req, res, next) => {
     res.locals.hideHeader = true;
     
    
-    const { foodType, address } = req.body;
+    const { foodType, address, locality, longitude, latitude } = req.body;
 
-    const establishment = { foodType, address };
-    
-    const { longitude, latitude } = req.body;
+    const establishment = { foodType, address, locality };
 
     if (req.file) {
         establishment.photo = req.file.path;
@@ -100,9 +98,8 @@ module.exports.doCreate = (req, res, next) => {
         })
     }
     
-    const { name, foodType, address } = req.body;
-    const establishment = { name, foodType, address };
-    const { longitude, latitude } = req.body;
+    const { name, foodType, address, locality, longitude, latitude } = req.body;
+    const establishment = { name, foodType, address, locality };
 
     if (req.file) {
         establishment.photo = req.file.path;

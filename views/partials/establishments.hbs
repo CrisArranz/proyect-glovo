@@ -6,11 +6,12 @@
             {{#each establishments }}
                 <div class="col-3 custom-dimension mt-5 mb-5">
                     <a class="d-flex justify-content-center align-items-center custom-img-dimensions custom-align-center" href="/order/{{this.id}}/create" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
-                        <div class="img-hover-zoom card h-100 w-100 overflow-hidden">
+                        <div class="img-hover-zoom card h-100 w-100 overflow-hidden rounded-circle">
                             <img src="{{this.photo}}" class="card-img h-100 w-100" alt="{{this.name}}">
                         </div>
                     </a>
-                    <div class="w-75 custom-align-center">Localizacion: <span class="fst-italic fw-bold">{{this.address}}</span></div>
+                    <div class="w-100 text-center"><span class="fw-bold">{{this.name}}</span></div>
+                    <div class="w-100 text-center"><span class="fst-italic">Localización: </span><span class="fst-italic fw-bold">{{this.locality}}</span></div>
                 </div>
             {{/each}}
         </div>

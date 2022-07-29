@@ -1,5 +1,7 @@
 module.exports.setLocation = (req, res, next) => {
-    const objectLocation = { address, latitude, longitude } = req.body
+    const { address, latitudeOrder, longitudeOrder, localityOrder } = req.body;
+    const objectLocation = { address, latitudeOrder, longitudeOrder, localityOrder };
+
     res.locals.hideHeader = true;
     res.locals.orderLocation = objectLocation;
     res.cookie('orderLocationCookie', objectLocation, {

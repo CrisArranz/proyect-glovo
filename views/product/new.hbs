@@ -23,10 +23,10 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Precio</label>
-                    <input name="lastPrice" type="text" class="form-control {{#if errors.price }}is-invalid{{/if}}" value="{{product.price}}" placeholder="Precio..." />
-                    {{#if errors.price}}
+                    <input name="lastPrice" type="text" class="form-control {{#if errors.lastPrice }}is-invalid{{/if}}" value="{{product.lastPrice}}" placeholder="Precio..." />
+                    {{#if errors.lastPrice}}
                         <div class="invalid-feedback">
-                            {{errors.price}}
+                            {{errors.lastPrice}}
                         </div>
                     {{/if}}
                 </div>

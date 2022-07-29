@@ -33,6 +33,9 @@ const establishmentSchema = new Schema({
             default: "Point"
         },
         coordinates: [Number]
+    },
+    locality: {
+        type: String
     }
 });
 
