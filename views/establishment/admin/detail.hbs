@@ -122,16 +122,16 @@
                                                                 <img class="img-size-product-custom" src="{{this.photo}}" />
                                                             </a>
                                                         </div>
-                                                        <div class="col-3 text-center">
+                                                        <div class="col-3 text-center d-flex flex-column justify-content-center">
                                                             <a class="w-100 d-flex justify-content-center" href="/product/{{this.idEstablishment}}/{{this._id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
                                                                 {{this.name}}
                                                             </a>
                                                         </div>
-                                                        <div class="col-3 text-center custom-currency">
-                                                            {{this.price}}
+                                                        <div class="col-3 text-center custom-currency d-flex flex-column justify-content-center">
+                                                            <span>{{this.price}}</span>
                                                         </div>
                                                         <div class="col-3 d-flex justify-content-center">
-                                                            <form action="/product/{{this.idEstablishment}}/{{this._id}}/delete" method="POST" >
+                                                            <form action="/product/{{this.idEstablishment}}/{{this._id}}/delete" method="POST" class="d-flex flex-column justify-content-center">
                                                                 <button type="submit" class="btn btn-link p-0 ps-1 pe-1 text-success" data-bs-toggle="tooltip" data-bs-title="Eliminar producto"><i class="fa-solid fa-trash fa-fw"></i></button>
                                                             </form>
                                                         </div>

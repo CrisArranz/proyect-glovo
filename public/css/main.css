@@ -84,7 +84,7 @@ footer {
     --bs-btn-padding-x: 0.55rem;
 }
 
-.custom-currency::after{
+.custom-currency span::after{
     content: '€';
 }
 
@@ -102,7 +102,7 @@ footer {
 }
 
 .img-size-product-custom{
-    width: 4.5rem;
+    width: 5.5rem;
     height: 3.5rem;
 }
 
