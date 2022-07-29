@@ -14,12 +14,12 @@
         <div class="row mt-5">
             {{#each establishment}}
                 <div class="col-3 custom-dimension mt-5 mb-5">
-                    <a class="d-flex justify-content-center align-items-center custom-img-dimensions" href="/establishment/{{this.id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
+                    <a class="d-flex justify-content-center align-items-center custom-img-dimensions custom-align-center" href="/establishment/{{this.id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
                         <div class="img-hover-zoom card h-100 w-100 overflow-hidden">
                             <img src="{{this.photo}}" class="card-img h-100 w-100" alt="{{this.name}}">
                         </div>
                     </a>
-                    <div class="w-75">Localizacion: <span class="fst-italic fw-bold">{{this.address}}</span></div>
+                    <div class="w-75 text-center custom-align-center">Localizacion: <span class="fst-italic fw-bold">{{this.address}}</span></div>
                 </div>
             {{/each}}
         </div>
