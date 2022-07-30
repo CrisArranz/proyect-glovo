@@ -29,7 +29,9 @@ const loadUser = (req, res, next) => {
             return Payment
                 .findOne({ idUser: userId, activate: true })
                 .then(payment => {
-                    res.locals.idPayment = payment._id;
+                    if (payment) {
+                        res.locals.idPayment = payment._id;
+                    }
                     next();
                 })
         })
