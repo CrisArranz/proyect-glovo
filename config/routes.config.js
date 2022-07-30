@@ -39,7 +39,9 @@ router.post('/users/:id/update', secure.isAuthenticated, user.updateUser);
 router.get('/payments/:idUser', secure.isAuthenticated, payment.getPaymentMethods);
 router.get('/payments/:idUser/create', secure.isAuthenticated, payment.create);
 router.post('/payments/:idUser/create', secure.isAuthenticated, payment.doCreate);
+router.post('/payments/:idUser/:idPayment/delete', secure.isAuthenticated, payment.doDelete);
 router.post('/payments/:idUser/:idPayment/update', secure.isAuthenticated, payment.doUpdate);
+
 
 //Establishment
 router.get('/establishment', secure.isAuthenticated, secure.isAdmin, establishment.getEstablishments);

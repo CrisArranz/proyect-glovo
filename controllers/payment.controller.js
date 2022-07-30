@@ -65,3 +65,10 @@ module.exports.doUpdate = (req, res, next) => {
         })
         .catch(error => next(error))
 }
+
+module.exports.doDelete = (req, res, next) => {
+    Payment
+        .findByIdAndDelete(req.params.idPayment)
+        .then(() => res.redirect(`/payments/${req.params.idUser}`))
+        .catch(error => next(error));
+}

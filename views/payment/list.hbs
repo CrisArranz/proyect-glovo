@@ -11,7 +11,7 @@
                             <th scope="col">Num. Tarjeta</th>
                             <th scope="col">Fecha Expira.</th>
                             <th scope="col">Pais</th>
-                            <th scope="col">Activa</th>
+                            <th class="text-center" scope="col">Activa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,12 +22,18 @@
                                 <td class="{{#if this.activate}}fw-bold text-success{{/if}}">{{this.cardNumber}}</td>
                                 <td class="{{#if this.activate}}fw-bold text-success{{/if}}">{{this.expirationDate}}</td>
                                 <td class="{{#if this.activate}}fw-bold text-success{{/if}}">{{this.country}}</td>
-                                <td>
+                                <td class="{{#if this.activate}}{{else}}d-flex justify-content-around{{/if}}">
                                     <form class="d-flex justify-content-center" action="/payments/{{idUser}}/{{this._id}}/update" method="POST">
                                         <input class="form-check-input" name="activate" type="checkbox" value="{{#if this.activate}}false{{else}}true{{/if}}" hidden checked />
                                         {{#if this.activate}}
                                         {{else}}
-                                            <button class="btn btn-link p-0" type="submit" data-bs-toggle="tooltip" data-bs-title="Activar Método de pago"><i class="fa-solid fa-check"></i></button>
+                                            <button class="btn btn-link p-0 text-success" type="submit" data-bs-toggle="tooltip" data-bs-title="Activar Método de pago"><i class="fa-solid fa-check"></i></button>
+                                        {{/if}}
+                                    </form>
+                                    <form class="d-flex justify-content-center" action="/payments/{{idUser}}/{{this._id}}/delete" method="POST">
+                                        {{#if this.activate}}
+                                        {{else}}
+                                            <button class="btn btn-link p-0 text-success" type="submit" data-bs-toggle="tooltip" data-bs-title="Eliminar Método de pago"><i class="fa-solid fa-xmark"></i></button>
                                         {{/if}}
                                     </form>
                                 </td>
