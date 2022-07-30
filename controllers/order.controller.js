@@ -1,4 +1,4 @@
-const { Establishment, Product } = require('../models');
+const { Order, Establishment, Product } = require('../models');
 
 module.exports.setLocation = (req, res, next) => {
     const { address, latitudeOrder, longitudeOrder, localityOrder } = req.body;
@@ -39,5 +39,35 @@ module.exports.create = (req, res, next) => {
                     res.render('order/new', { establishment, products, location: req.cookies.orderLocationCookie })
                 })
         })
+        .catch(error => next(error));
+}
+
+module.exports.doCreate = (req, res, next) => {
+    res.locals.hideHeader = true;
+
+    const { idUser, idPayment, address, longitudeOrder, latitudeOrder, product, unitPrice, quantity, productsSelected } = req.body;
+
+    const order = { 
+        idUser, 
+        idPayment, 
+        address, 
+        product: parseInt(productsSelected) > 1 ? product : [product], 
+        unitPrice: parseInt(productsSelected) > 1 ? unitPrice : [unitPrice], 
+        quantity: parseInt(productsSelected) > 1 ? quantity : [quantity] 
+    };
+
+    order.products = order.product.reduce((products, product, index) => {
+        products.push({ product: product, quantity: quantity[index], unitPrice: unitPrice[index]})
+        return products;
+    }, [])
+    
+    order.location = { 
+        type: 'Point', 
+        coordinates: [longitudeOrder, latitudeOrder] 
+    }
+
+    Order
+        .create(order)
+        .then(() => res.redirect('/'))
         .catch(error => next(error));
 }

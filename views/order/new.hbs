@@ -19,25 +19,21 @@
                                         <div class="accordion-body mb-3 mt-3">
                                             <div class="row justify-content-center">
                                                 <div class="col-3 d-flex justify-content-center">
-                                                    <a class="w-100 d-flex justify-content-center" href="/product/{{this.idEstablishment}}/{{this._id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
-                                                        <img class="img-size-product-custom" src="{{this.photo}}" />
-                                                    </a>
+                                                    <img class="img-size-product-custom" src="{{this.photo}}" />
                                                 </div>
                                                 <div class="col-3 text-center d-flex flex-column justify-content-center">
-                                                    <a class="w-100 d-flex justify-content-center" href="/product/{{this.idEstablishment}}/{{this._id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
-                                                        {{this.name}}
-                                                    </a>
+                                                    {{this.name}}
                                                 </div>
                                                 <div class="col-3 text-center custom-currency d-flex flex-column justify-content-center">
                                                     <span>{{this.price}}</span>
                                                 </div>
                                                 <div class="col-2 d-flex justify-content-between">
                                                     <span class="d-flex flex-column justify-content-center">
-                                                        <a href="/" class="text-muted"><i class="fa-solid fa-minus fa-fw"></i></a>
+                                                        <button class="minusProduct btn btn-link text-muted" onclick="decreasingProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}' })"><i class="fa-solid fa-minus fa-fw"></i></button>
                                                     </span>
-                                                    <p class="d-flex justify-content-center align-items-center fs-5 custom-align-center">0</p>
+                                                    <p id="{{this._id}}" class="d-flex justify-content-center align-items-center fs-5 custom-align-center">0</p>
                                                     <span class="d-flex flex-column justify-content-center">
-                                                        <a href="/" class="text-muted"><i class="fa-solid fa-plus fa-fw"></i></a>
+                                                        <button class="plusProduct btn btn-link text-muted" onclick="incrementProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}' })"><i class="fa-solid fa-plus fa-fw"></i></button>
                                                     </span>
                                                 </div>
                                             </div>
@@ -53,8 +49,34 @@
             </div>
         </div>
         <div class="col-4">
-            Tu pedido
-            
+            <h4>Tu pedido</h4>
+            <form id="order" action="/order/create" method="POST">
+                <div class="descriptionOrder row mb-3">
+                    <div class="col-6 fw-bold">Producto</div>
+                    <div class="col-3 fw-bold">Cantidad</div>
+                    <div class="col-3 fw-bold">Precio</div>
+                </div>
+                <div class="descriptionProducts">
+
+                </div>
+                <input type="hidden" name="idUser" value="{{currentUser._id}}" />
+                <input type="hidden" name="idPayment" value="{{idPayment}}" />
+                <input type="hidden" name="longitudeOrder" value="{{location.longitudeOrder}}" />
+                <input type="hidden" name="latitudeOrder" value="{{location.latitudeOrder}}" />
+                <input type="hidden" name="address" value="{{location.address}}" />
+                <input type="hidden" name="productsSelected" value="0" />
+                <div class="row justify-content-around">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-success rounded mt-5" disabled>Crear Pedido</button>
+                    </div>
+                    <div class="col-3 d-flex justify-content-end align-items-end">
+                        Total:
+                    </div>
+                    <div class="col-3 custom-currency d-flex justify-content-center align-items-end">
+                        <span class="total-order"></span>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

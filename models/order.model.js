@@ -23,7 +23,7 @@ const orderSchema = new Schema({
             unitPrice: Number
         }]
     },
-    idPayments: {
+    idPayment: {
         type: Schema.Types.ObjectId,
         required: true,
         ref: "payment"

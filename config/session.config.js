@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Payment } = require('../models');
 const expressSession = require('express-session');
 const mongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
@@ -26,7 +26,12 @@ const loadUser = (req, res, next) => {
             req.user = user;
             res.locals.currentUser = user;
             res.locals.admin = user.isAdmin;
-            next();
+            return Payment
+                .findOne({ idUser: userId, activate: true })
+                .then(payment => {
+                    res.locals.idPayment = payment._id;
+                    next();
+                })
         })
         .catch(next);
     } else {

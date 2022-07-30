@@ -13,3 +13,11 @@ module.exports.isAdmin = (req, res, next) => {
         res.redirect('/')
     }
 }
+
+module.exports.hasLocation = (req, res, next) => {
+    if (req.cookies.orderLocationCookie) {
+        next();
+    }else {
+        res.redirect('/')
+    }
+}
