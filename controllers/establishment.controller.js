@@ -29,7 +29,8 @@ module.exports.update = (req, res, next) => {
                 .find({idEstablishment: establishment._id})
                 .then(searchProducts => {
                     const products = searchProducts.reduce((products, product) => {
-                        const copyProduct = { _id, name, photo, price, type, cluster, idEstablishment, keyCluster } = product;
+                        const { _id, name, photo, price, type, cluster, idEstablishment, keyCluster } = product;
+                        const copyProduct = { _id, name, photo, price, type, cluster, idEstablishment, keyCluster };
                         const keyProducts = product.cluster.split(' ').join('');
                         copyProduct['keyCluster'] = keyProducts;
                         if (products[keyProducts]) {

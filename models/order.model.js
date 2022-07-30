@@ -12,11 +12,16 @@ const orderSchema = new Schema({
         },
         coordinates: [Number]
     },
-    total: {
-        type: Number
-    },
     products: {
-        type: [Object]
+        type: [{
+            product: {
+                type: Schema.Types.ObjectId,
+                required: true,
+                ref: "product"
+            },
+            quantity: Number,
+            unitPrice: Number
+        }]
     },
     idPayments: {
         type: Schema.Types.ObjectId,

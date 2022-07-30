@@ -1,0 +1,60 @@
+<div class="container h-75 mt-5 mb-5">
+    <h1 class="text-success">{{establishment.name}}</h1>
+    {{#if location}}<h4>Localizacion: <span class="fst-italic">{{location.localityOrder}}</span></h4>{{/if}}
+    <h2>Listado de Productos</h1>
+    <div class="row">
+        <div class="col-8 mt-5">
+            <div class="row">
+                {{#if (isObjectNotEmpty products)}}
+                    <div class="accordion" id="accordionProducts">
+                        {{#each products}}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{@key}}">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{@key}}" aria-expanded="true" aria-controls="collapse{{@key}}">
+                                        {{this.[0].cluster}}
+                                    </button>
+                                </h2>
+                                {{#each this}}
+                                    <div id="collapse{{this.keyCluster}}" class="accordion-collapse collapse" aria-labelledby="heading{{this.keyCluster}}" data-bs-parent="#accordionProducts">
+                                        <div class="accordion-body mb-3 mt-3">
+                                            <div class="row justify-content-center">
+                                                <div class="col-3 d-flex justify-content-center">
+                                                    <a class="w-100 d-flex justify-content-center" href="/product/{{this.idEstablishment}}/{{this._id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
+                                                        <img class="img-size-product-custom" src="{{this.photo}}" />
+                                                    </a>
+                                                </div>
+                                                <div class="col-3 text-center d-flex flex-column justify-content-center">
+                                                    <a class="w-100 d-flex justify-content-center" href="/product/{{this.idEstablishment}}/{{this._id}}/update" data-bs-toggle="tooltip" data-bs-title="{{this.name}}">
+                                                        {{this.name}}
+                                                    </a>
+                                                </div>
+                                                <div class="col-3 text-center custom-currency d-flex flex-column justify-content-center">
+                                                    <span>{{this.price}}</span>
+                                                </div>
+                                                <div class="col-2 d-flex justify-content-between">
+                                                    <span class="d-flex flex-column justify-content-center">
+                                                        <a href="/" class="text-muted"><i class="fa-solid fa-minus fa-fw"></i></a>
+                                                    </span>
+                                                    <p class="d-flex justify-content-center align-items-center fs-5 custom-align-center">0</p>
+                                                    <span class="d-flex flex-column justify-content-center">
+                                                        <a href="/" class="text-muted"><i class="fa-solid fa-plus fa-fw"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        {{/each}}
+                    </div>
+                {{else}}
+                    <div class="col-12 d-flex justify-content-center custom-dimension">No tenemos ningún producto para este establecimiento.</div>
+                {{/if}}
+            </div>
+        </div>
+        <div class="col-4">
+            Tu pedido
+            
+        </div>
+    </div>
+</div>
