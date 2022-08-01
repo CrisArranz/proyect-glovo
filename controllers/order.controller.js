@@ -43,10 +43,23 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
+
+
+    function parseArrayToNumber(parses) {
+        return parses.reduce((accumulator, current) => {
+            accumulator.push(parseFloat(current));
+            console.log(accumulator);
+            return accumulator;
+        },[]);
+    }
+
     res.locals.hideHeader = true;
 
     const { idUser, idPayment, address, longitudeOrder, latitudeOrder, product, unitPrice, quantity, productsSelected } = req.body;
     const { idEstablishment } = req.params;
+
+    const parsePrices = parseInt(productsSelected) > 1 ? unitPrice : [unitPrice];
+    const parseQuantity = parseInt(productsSelected) > 1 ? quantity : [quantity];
 
     const order = { 
         idUser, 
@@ -54,12 +67,12 @@ module.exports.doCreate = (req, res, next) => {
         idEstablishment,
         address, 
         product: parseInt(productsSelected) > 1 ? product : [product], 
-        unitPrice: parseInt(productsSelected) > 1 ? unitPrice : [unitPrice], 
-        quantity: parseInt(productsSelected) > 1 ? quantity : [quantity] 
+        unitPrice: parseArrayToNumber(parsePrices), 
+        quantity: parseArrayToNumber(parseQuantity)
     };
 
     order.products = order.product.reduce((products, product, index) => {
-        products.push({ product: product, quantity: quantity[index], unitPrice: unitPrice[index], subtotal: quantity[index] * unitPrice[index]})
+        products.push({ product: product, quantity: parseInt(order.quantity[index]), unitPrice: parseFloat(order.unitPrice[index]), subtotal: parseFloat(order.quantity[index] * order.unitPrice[index])})
         return products;
     }, []);
 
@@ -97,14 +110,14 @@ module.exports.list = (req, res, next) => {
 module.exports.detail = (req, res, next) => {
     res.locals.hideHeader = true;
 
-    const { idUser } = req.params;
+    const { idOrder } = req.params;
 
     Order
-        .find({ idUser })
+        .findById(idOrder)
         .populate('idEstablishment')
         .populate('products.product')
         .then(orders => {
-            res.render('order/list', { orders })
+            res.render('order/detail', { orders })
         })
         .catch(error => next(error))
 }

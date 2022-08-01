@@ -116,3 +116,6 @@ footer {
     padding: 0 13px 0 3px;
     font-size: 15.5px;
 }
+.custom-image-filter {
+    filter: brightness(55%);
+}
