@@ -27,15 +27,17 @@
                                                 <div class="col-3 text-center custom-currency d-flex flex-column justify-content-center">
                                                     <span>{{this.price}}</span>
                                                 </div>
-                                                <div class="col-2 d-flex justify-content-between">
-                                                    <span class="d-flex flex-column justify-content-center">
-                                                        <button class="minusProduct btn btn-link text-muted" onclick="decreasingProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}' })"><i class="fa-solid fa-minus fa-fw"></i></button>
-                                                    </span>
-                                                    <p id="{{this._id}}" class="d-flex justify-content-center align-items-center fs-5 custom-align-center">0</p>
-                                                    <span class="d-flex flex-column justify-content-center">
-                                                        <button class="plusProduct btn btn-link text-muted" onclick="incrementProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}' })"><i class="fa-solid fa-plus fa-fw"></i></button>
-                                                    </span>
-                                                </div>
+                                                {{#if ../../location}}
+                                                    <div class="col-2 d-flex justify-content-between">
+                                                        <span class="d-flex flex-column justify-content-center">
+                                                            <button class="minusProduct btn btn-link text-muted" onclick="decreasingProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}' })"><i class="fa-solid fa-minus fa-fw"></i></button>
+                                                        </span>
+                                                        <p id="{{this._id}}" class="d-flex justify-content-center align-items-center fs-5 custom-align-center">0</p>
+                                                        <span class="d-flex flex-column justify-content-center">
+                                                            <button class="plusProduct btn btn-link text-muted" onclick="incrementProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}' })"><i class="fa-solid fa-plus fa-fw"></i></button>
+                                                        </span>
+                                                    </div>
+                                                {{/if}}
                                             </div>
                                         </div>
                                     </div>
@@ -66,15 +68,21 @@
                 <input type="hidden" name="address" value="{{location.address}}" />
                 <input type="hidden" name="productsSelected" value="0" />
                 <div class="row justify-content-around">
-                    <div class="col-6">
-                        <button type="submit" class="btn btn-success rounded mt-5" disabled>Crear Pedido</button>
-                    </div>
-                    <div class="col-3 d-flex justify-content-end align-items-end">
-                        Total:
-                    </div>
-                    <div class="col-3 custom-currency d-flex justify-content-center align-items-end">
-                        <span class="total-order">0</span>
-                    </div>
+                    {{#if location}}
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-success rounded mt-5" disabled>Crear Pedido</button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end align-items-end">
+                            Total:
+                        </div>
+                        <div class="col-3 custom-currency d-flex justify-content-center align-items-end">
+                            <span class="total-order">0</span>
+                        </div>
+                    {{else}}
+                        <div class="col-12">
+                            <a href="/" class="btn btn-success">Establecer dirección</a>
+                        </div>
+                    {{/if}}
                 </div>
             </form>
         </div>

@@ -48,7 +48,6 @@ module.exports.doCreate = (req, res, next) => {
     function parseArrayToNumber(parses) {
         return parses.reduce((accumulator, current) => {
             accumulator.push(parseFloat(current));
-            console.log(accumulator);
             return accumulator;
         },[]);
     }
