@@ -45,7 +45,7 @@ router.post('/payments/:idUser/:idPayment/update', secure.isAuthenticated, payme
 
 //Establishment
 router.get('/establishment', secure.isAuthenticated, secure.isAdmin, establishment.getEstablishments);
-router.get('/establishment/filter-search', secure.isAuthenticated, secure.isAdmin, establishment.filterEstablishments);
+router.get('/establishment/filter-search', secure.isAuthenticated, establishment.filterEstablishments);
 router.get('/establishment/create', secure.isAuthenticated, secure.isAdmin, establishment.create);
 router.get('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, establishment.update);
 router.post('/establishment/create', secure.isAuthenticated, secure.isAdmin, upload.single('photo'), establishment.doCreate);
