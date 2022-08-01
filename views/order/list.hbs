@@ -1,0 +1,26 @@
+<div class="container{{#if orders}}{{else}} h-75{{/if}} mt-5 mb-5">
+    <h1>Histórico de Pedidos</h1>
+    {{#if orders}}
+        <div class="row mt-5">
+            {{#each orders}}
+                <div class="col-4">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{this.idEstablishment.photo}}" class="w-100 h-100" alt="{{this.idEstablishment.name}}">
+                        </div>
+                        <div class="col-8">
+                            <h5 class="text-success fw-bold">{{this.idEstablishment.name}}</h5>
+                            <p class="fst-italic">{{showFormattedProducts this.products}}</p>
+                            <p class="fw-bold custom-currency"><span>{{this.total}}</span></p>
+                            <a href="/order/{{this._id}}/detail" class="btn btn-success">Ver los detalles</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="row h-75 align-items-center">
+            <div class="col-12 d-flex justify-content-center">No tenemos ningún pedido registrado.</div>
+        </div>
+    {{/if}}
+</div>

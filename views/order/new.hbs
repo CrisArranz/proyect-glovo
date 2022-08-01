@@ -50,7 +50,7 @@
         </div>
         <div class="col-4">
             <h4>Tu pedido</h4>
-            <form id="order" action="/order/create" method="POST">
+            <form id="order" action="/order/{{establishment._id}}/create" method="POST">
                 <div class="descriptionOrder row mb-3">
                     <div class="col-6 fw-bold">Producto</div>
                     <div class="col-3 fw-bold">Cantidad</div>
@@ -73,7 +73,7 @@
                         Total:
                     </div>
                     <div class="col-3 custom-currency d-flex justify-content-center align-items-end">
-                        <span class="total-order"></span>
+                        <span class="total-order">0</span>
                     </div>
                 </div>
             </form>

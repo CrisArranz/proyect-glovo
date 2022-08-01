@@ -18,3 +18,13 @@ hbs.registerHelper('isSame', function (value, selectValue) {
 hbs.registerHelper('isObjectNotEmpty', function (objectNotEmpty) {
     return Object.keys(objectNotEmpty).length;
 });
+
+hbs.registerHelper('prettyDateWithTime', (date) => `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`);
+
+hbs.registerHelper('showFormattedProducts', (products) => {
+    const detailProducts = products.reduce((stringProducts, product, index) => {
+        stringProducts += `${(!index ? '' : ',')} ${product.quantity}x ${product.product.name}`;
+        return stringProducts;
+    }, '');
+    return detailProducts.length > 47 ? `${detailProducts.substring(0,45)}...`: detailProducts;
+});

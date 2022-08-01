@@ -46,10 +46,12 @@ module.exports.doCreate = (req, res, next) => {
     res.locals.hideHeader = true;
 
     const { idUser, idPayment, address, longitudeOrder, latitudeOrder, product, unitPrice, quantity, productsSelected } = req.body;
+    const { idEstablishment } = req.params;
 
     const order = { 
         idUser, 
-        idPayment, 
+        idPayment,
+        idEstablishment,
         address, 
         product: parseInt(productsSelected) > 1 ? product : [product], 
         unitPrice: parseInt(productsSelected) > 1 ? unitPrice : [unitPrice], 
@@ -57,9 +59,14 @@ module.exports.doCreate = (req, res, next) => {
     };
 
     order.products = order.product.reduce((products, product, index) => {
-        products.push({ product: product, quantity: quantity[index], unitPrice: unitPrice[index]})
+        products.push({ product: product, quantity: quantity[index], unitPrice: unitPrice[index], subtotal: quantity[index] * unitPrice[index]})
         return products;
-    }, [])
+    }, []);
+
+    order.total = order.products.reduce((total, product) => {
+        total += product.subtotal;
+        return total;
+    }, 0);
     
     order.location = { 
         type: 'Point', 
@@ -70,4 +77,34 @@ module.exports.doCreate = (req, res, next) => {
         .create(order)
         .then(() => res.redirect('/'))
         .catch(error => next(error));
+}
+
+module.exports.list = (req, res, next) => {
+    res.locals.hideHeader = true;
+
+    const { idUser } = req.params;
+
+    Order
+        .find({ idUser })
+        .populate('idEstablishment')
+        .populate('products.product')
+        .then(orders => {
+            res.render('order/list', { orders })
+        })
+        .catch(error => next(error))
+}
+
+module.exports.detail = (req, res, next) => {
+    res.locals.hideHeader = true;
+
+    const { idUser } = req.params;
+
+    Order
+        .find({ idUser })
+        .populate('idEstablishment')
+        .populate('products.product')
+        .then(orders => {
+            res.render('order/list', { orders })
+        })
+        .catch(error => next(error))
 }

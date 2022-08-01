@@ -18,13 +18,13 @@ function decreasingProduct({ id, name, price, photo }) {
     modifyDOMOrder(order, id);
 }
 
-function resetOrder() {
-    order = {}
-
-}
-
 function modifyDOMOrder(order, id) {
     document.getElementById(id).innerText = order[id] ? order[id].quantity : 0;
+
+    if(!order.length){
+        document.querySelector(`#order span.total-order`).innerText = 0;
+    }
+
     if (order[id]) {
         const total = Object.keys(order).reduce((total, product) => {
             total += order[product].quantity * order[product].price;

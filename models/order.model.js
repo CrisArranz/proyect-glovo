@@ -20,8 +20,12 @@ const orderSchema = new Schema({
                 ref: "product"
             },
             quantity: Number,
-            unitPrice: Number
+            unitPrice: Number,
+            subtotal: Number
         }]
+    },
+    total: {
+        type: Number
     },
     idPayment: {
         type: Schema.Types.ObjectId,
@@ -32,7 +36,15 @@ const orderSchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true,
         ref: "user"
+    },
+    idEstablishment: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "establishment"
     }
+},
+{
+    timestamps: true
 });
 
 const Order = mongoose.model('order', orderSchema);
