@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a href="/"><img class="custom-img-logo" src="/image/glovo-1.svg" /></a>
         {{#if currentUser }}
-            <form class="d-flex" role="search" action="/filter-search" method="GET">
+            <form class="d-flex" role="search" action="/establishment/filter-search" method="GET">
                 <input class="form-control me-2" name="search" type="search" placeholder="Búsqueda..." value=""{{search}} />
                 <button class="btn btn-success" type="submit">Buscar</button>
             </form>

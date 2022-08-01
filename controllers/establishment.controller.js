@@ -13,9 +13,24 @@ module.exports.filterEstablishments = (req, res, next) => {
     res.locals.hideHeader = true;
     const { search } = req.query;
 
+    const criterial = {};
+    if (req.cookies.orderLocationCookie){
+        criterial.location = {
+            $near: {
+                $geometry: {
+                    type: "Point",
+                    coordinates: [req.cookies.orderLocationCookie.longitudeOrder, req.cookies.orderLocationCookie.latitudeOrder]
+                },
+                $maxDistance: 5000
+            }
+        }
+    }
+
+    criterial.name = new RegExp(search , 'i');
+
     Establishment
-      .find({name: new RegExp(search , 'i')})
-      .then(establishment => res.render('establishment/admin/list' , { establishment, search, location: req.cookies.orderLocationCookie }))
+      .find(criterial)
+      .then(establishments => res.render('partials/establishments' , { establishments, search, location: req.cookies.orderLocationCookie }))
       .catch(error => next(error));
 }
 
