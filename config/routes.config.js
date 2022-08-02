@@ -65,6 +65,7 @@ router.get('/order/:idEstablishment/create', order.create);
 router.post('/order/:idEstablishment/create', secure.isAuthenticated, order.doCreate);
 router.get('/orders/:idUser/list', secure.isAuthenticated, order.list);
 router.get('/order/:idOrder/detail', secure.isAuthenticated, order.detail);
+router.get('/order/:idOrder/message', secure.isAuthenticated, order.messageOrder);
 
 //Remove Location
 router.get('/remove-location', misc.removeLocation);

@@ -87,7 +87,7 @@ module.exports.doCreate = (req, res, next) => {
 
     Order
         .create(order)
-        .then(() => res.redirect('/'))
+        .then(order => res.redirect(`/order/${order._id}/message`))
         .catch(error => next(error));
 }
 
@@ -117,6 +117,21 @@ module.exports.detail = (req, res, next) => {
         .populate('products.product')
         .then(orders => {
             res.render('order/detail', { orders })
+        })
+        .catch(error => next(error))
+}
+
+module.exports.messageOrder = (req, res, next) => {
+    res.locals.hideHeader = true;
+
+    Order
+        .findOne({_id: req.params.idOrder})
+        .then(order => {
+            if (order) {
+                res.render('order/message', { msg: 'Su pedido ha sido realizado, ¡DISFRÚTELO!', success: true, order })
+            } else {
+                res.render('order/message', { msg: 'Su pedido no se ha podido realizar, por favor realicelo de nuevo.', success: false })
+            }
         })
         .catch(error => next(error))
 }

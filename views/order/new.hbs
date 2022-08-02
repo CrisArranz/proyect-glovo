@@ -1,8 +1,8 @@
-<div class="container h-75 mt-5 mb-5">
+<div class="container h-100 mt-5 mb-5">
     <h1 class="text-success">{{establishment.name}}</h1>
     {{#if location}}<h4>Localizacion: <span class="fst-italic">{{location.localityOrder}}</span></h4>{{/if}}
     <h2>Listado de Productos</h1>
-    <div class="row">
+    <div class="row h-75">
         <div class="col-8 mt-5">
             <div class="row">
                 {{#if (isObjectNotEmpty products)}}
