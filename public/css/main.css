@@ -1,5 +1,6 @@
 body, html{
     height: 100%;
+    overflow-x: hidden;
 }
 
 .custom-img-logo{
@@ -98,11 +99,14 @@ footer {
 }
 
 .bg-custom-colaborate{
-    background-color: rgba(211, 255, 240, 0.712);
+    background: radial-gradient(circle, rgba(211, 255, 240, 0.712) 96%, white 10%);
+	margin: 0 auto;
+	background-size: 100% 700vh;
+	background-repeat: no-repeat;
 }
 
 .img-size-product-custom{
-    width: 5.5rem;
+    width: 50%;
     height: 3.5rem;
 }
 
@@ -118,4 +122,11 @@ footer {
 }
 .custom-image-filter {
     filter: brightness(55%);
+}
+
+.bg-custom-curve{
+    background: radial-gradient(circle, white 90%, #FFC244FF 10%);
+	margin: 0 auto;
+	background-size: 100% 1450vh;
+	background-repeat: no-repeat;
 }
