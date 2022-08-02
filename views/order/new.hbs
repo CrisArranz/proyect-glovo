@@ -52,6 +52,11 @@
         </div>
         <div class="col-4">
             {{#if location}}
+                {{#if noPayment}}
+                    <div class="alert alert-danger" role="alert">
+                        <p class="fw-bold m-0"><i class="fa-solid fa-circle-exclamation fa-fw"></i> Tienes que seleccionar o especificar un metodo de pago, lo puedes hacer en el siguiente <a href="/payments/{{currentUser._id}}">enlace</a></p>
+                    </div>
+                {{/if}}
                 <h4>Tu pedido</h4>
                 <div class="descriptionOrder row mb-3">
                     <div class="col-6 fw-bold">Producto</div>
