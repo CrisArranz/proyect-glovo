@@ -65,7 +65,10 @@ footer a:hover {
 
 footer {
     color: white;
-    background-color: black;
+    background: radial-gradient(circle, rgb(0, 0, 0) 98.5%, rgba(211, 255, 240, 0.712) 10%);
+	margin: 0 auto;
+	background-size: 100% 1500vh;
+	background-repeat: no-repeat;
 }
 
 .img-hover-zoom img {
