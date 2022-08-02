@@ -15,7 +15,7 @@
                                     </button>
                                 </h2>
                                 {{#each this}}
-                                    <div id="collapse{{this.keyCluster}}" class="accordion-collapse collapse" aria-labelledby="heading{{this.keyCluster}}" data-bs-parent="#accordionProducts">
+                                    <div id="collapse{{this.keyCluster}}" class="accordion-collapse collapse {{#if @../index}}{{else}}show{{/if}}" aria-labelledby="heading{{this.keyCluster}}" data-bs-parent="#accordionProducts">
                                         <div class="accordion-body mb-3 mt-3">
                                             <div class="row justify-content-center">
                                                 <div class="col-3 d-flex justify-content-center">
