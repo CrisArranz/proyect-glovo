@@ -21,7 +21,7 @@ const paymentSchema = new Schema({
         type: String,
         required: 'The expiration Date is required',
         match: [EXPIRATION_DATE_PATTERN, 'Invalid Expiration date, correct format MM/YY'],
-        trim: TransformStreamDefaultController
+        trim: true
     },
     ccv: {
         type: String,
