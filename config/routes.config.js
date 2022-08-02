@@ -32,8 +32,8 @@ router.post('/register', auth.doRegister);
 router.post('/logout', auth.logOut);
 
 //Users details
-router.get('/users/:id', secure.isAuthenticated, user.getUser);
-router.post('/users/:id/update', secure.isAuthenticated, user.updateUser);
+router.get('/users/:idUser', secure.isAuthenticated, user.getUser);
+router.post('/users/:idUser/update', secure.isAuthenticated, user.updateUser);
 
 //Payment Methods
 router.get('/payments/:idUser', secure.isAuthenticated, payment.getPaymentMethods);
@@ -47,10 +47,10 @@ router.post('/payments/:idUser/:idPayment/update', secure.isAuthenticated, payme
 router.get('/establishment', secure.isAuthenticated, secure.isAdmin, establishment.getEstablishments);
 router.get('/establishment/filter-search', secure.isAuthenticated, establishment.filterEstablishments);
 router.get('/establishment/create', secure.isAuthenticated, secure.isAdmin, establishment.create);
-router.get('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, establishment.update);
+router.get('/establishment/:idEstablishment/update', secure.isAuthenticated, secure.isAdmin, establishment.update);
 router.post('/establishment/create', secure.isAuthenticated, secure.isAdmin, upload.single('photo'), establishment.doCreate);
-router.post('/establishment/:id/update', secure.isAuthenticated, secure.isAdmin, upload.single('photo'), establishment.doUpdate);
-router.post('/establishment/:id/delete', secure.isAuthenticated, secure.isAdmin, establishment.doDelete);
+router.post('/establishment/:idEstablishment/update', secure.isAuthenticated, secure.isAdmin, upload.single('photo'), establishment.doUpdate);
+router.post('/establishment/:idEstablishment/delete', secure.isAuthenticated, secure.isAdmin, establishment.doDelete);
 
 //Product
 router.get('/product/:idEstablishment/create', secure.isAuthenticated, secure.isAdmin, product.create);

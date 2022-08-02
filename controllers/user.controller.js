@@ -4,7 +4,7 @@ const { User } = require('../models');
 module.exports.getUser = (req, res, next) => {
     res.locals.hideHeader = res.locals.currentUser;
     User
-        .findById(req.params.id)
+        .findById(req.params.idUser)
         .then((user) => {
             res.render('user/details', { user, location: req.cookies.orderLocationCookie })
         })
@@ -25,7 +25,7 @@ module.exports.updateUser = (req, res, next) => {
     const user = { name, phone };
 
     User
-        .findByIdAndUpdate(req.params.id, user)
+        .findByIdAndUpdate(req.params.idUser, user)
         .then(() => {
             res.redirect('/')
         })

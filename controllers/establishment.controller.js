@@ -38,7 +38,7 @@ module.exports.update = (req, res, next) => {
     res.locals.hideHeader = true;
 
     Establishment
-        .findById(req.params.id)
+        .findById(req.params.idEstablishment)
         .then(establishment => {
             return Product
                 .find({idEstablishment: establishment._id})
@@ -80,7 +80,7 @@ module.exports.doUpdate = (req, res, next) => {
     }
 
     Establishment
-        .findByIdAndUpdate(req.params.id, establishment)
+        .findByIdAndUpdate(req.params.idEstablishment, establishment)
         .then(() => {
             res.redirect('/establishment')
         })
@@ -89,10 +89,10 @@ module.exports.doUpdate = (req, res, next) => {
 
 module.exports.doDelete = (req, res, next) => {
     Establishment
-      .findByIdAndDelete(req.params.id)
+      .findByIdAndDelete(req.params.idEstablishment)
       .then(() => {
         return Product
-            .deleteMany({idEstablishment: req.params.id})
+            .deleteMany({idEstablishment: req.params.idEstablishment})
             .then(() => res.redirect(`/establishment`))
       })
       .catch(error => next(error));
