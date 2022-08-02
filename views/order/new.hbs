@@ -51,13 +51,19 @@
             </div>
         </div>
         <div class="col-4">
-            <h4>Tu pedido</h4>
-            <form id="order" action="/order/{{establishment._id}}/create" method="POST">
+            {{#if location}}
+                <h4>Tu pedido</h4>
                 <div class="descriptionOrder row mb-3">
                     <div class="col-6 fw-bold">Producto</div>
                     <div class="col-3 fw-bold">Cantidad</div>
                     <div class="col-3 fw-bold">Precio</div>
                 </div>
+            {{else}}
+                <div class="alert alert-warning" role="alert">
+                    <p class="fw-bold m-0"><i class="fa-solid fa-triangle-exclamation fa-fw"></i> Antes de poder realizar el pedido necesitas establecer una dirección de envío</p>
+                </div>
+            {{/if}}
+            <form id="order" action="/order/{{establishment._id}}/create" method="POST">
                 <div class="descriptionProducts">
 
                 </div>

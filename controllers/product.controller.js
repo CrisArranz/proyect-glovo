@@ -73,8 +73,8 @@ module.exports.doUpdate = (req, res, next) => {
         })
     }
     
-     const { lastPrice } = req.body;
-     const product = { lastPrice };
+     const { lastPrice, cluster } = req.body;
+     const product = { lastPrice, cluster };
 
     product.price = parseFloat(product.lastPrice);
 
