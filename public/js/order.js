@@ -30,7 +30,7 @@ function modifyDOMOrder(order, id) {
             total += order[product].quantity * order[product].price;
             return total;
         }, 0);
-        document.querySelector(`#order span.total-order`).innerText = total;
+        document.querySelector(`#order span.total-order`).innerText = total.toFixed(2);
     }
 
     if (document.getElementById(`order-${id}`)) {
