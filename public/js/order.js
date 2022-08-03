@@ -1,20 +1,55 @@
 let order = {}
 
-function incrementProduct({ id, name, price, photo }) {
-    const currentQuantity = order[id]?.quantity || 0;
-    order[id] = { quantity: currentQuantity + 1, name, price, photo };
+window.addEventListener('DOMContentLoaded', () => {
+    const localStorage = window.localStorage.getItem('orderStorage');
+    const localStorageIdEstablishment = localStorage ? Object.entries(JSON.parse(localStorage))[0][1]['idEstablishment'] : undefined;
+    const idEstablishment = document.querySelector('.current-establishment-order') ? document.querySelector('.current-establishment-order').id : undefined;
+    const btnCreateOrder = document.getElementById('createOrder');
 
+    if (localStorage && localStorageIdEstablishment && idEstablishment && idEstablishment === localStorageIdEstablishment) {
+        Object.entries(JSON.parse(localStorage)).forEach(values => {
+            modifyDOMOrder(JSON.parse(localStorage), values[0]);
+        })
+    } else {
+        if (idEstablishment) {
+            window.localStorage.removeItem('orderStorage');
+        }
+    }
+    if (btnCreateOrder) {
+        btnCreateOrder.addEventListener('click', () => {
+            window.localStorage.removeItem('orderStorage');
+        })
+    }
+})
+
+function incrementProduct({ id, name, price, photo, idEstablishment }) {
+    const localStorage = window.localStorage.getItem('orderStorage');
+    if (localStorage) {
+        order = JSON.parse(localStorage);
+    }
+
+    const currentQuantity = order[id]?.quantity || 0;
+    order[id] = { quantity: currentQuantity + 1, name, price, photo, idEstablishment };
+
+    window.localStorage.removeItem('orderStorage');
+    window.localStorage.setItem('orderStorage', JSON.stringify(order));
     modifyDOMOrder(order, id);
 }
 
-function decreasingProduct({ id, name, price, photo }) {
+function decreasingProduct({ id, name, price, photo, idEstablishment }) {
+    const localStorage = window.localStorage.getItem('orderStorage');
+    if (localStorage) {
+        order = JSON.parse(localStorage);
+    }
+
     const currentQuantity = order[id]?.quantity || 0;
-    order[id] = { quantity: currentQuantity - 1, name, price, photo };
+    order[id] = { quantity: currentQuantity - 1, name, price, photo, idEstablishment };
 
     if (currentQuantity <= 1) {
         delete order[id]
     }
-
+    window.localStorage.removeItem('orderStorage');
+    window.localStorage.setItem('orderStorage', JSON.stringify(order));
     modifyDOMOrder(order, id);
 }
 

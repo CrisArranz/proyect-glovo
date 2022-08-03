@@ -1,5 +1,5 @@
 <div class="container h-100 mt-5 mb-5">
-    <h1 class="text-success">{{establishment.name}}</h1>
+    <h1 id="{{establishment._id}}" class="text-success current-establishment-order">{{establishment.name}}</h1>
     {{#if location}}<h4>Localizacion: <span class="fst-italic">{{location.localityOrder}}</span></h4>{{/if}}
     <h2>Listado de Productos</h1>
     <div class="row h-75">
@@ -30,11 +30,11 @@
                                                 {{#if ../../location}}
                                                     <div class="col-2 d-flex justify-content-between">
                                                         <span class="d-flex flex-column justify-content-center">
-                                                            <button class="minusProduct btn btn-link text-muted" onclick="decreasingProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}' })"><i class="fa-solid fa-minus fa-fw"></i></button>
+                                                            <button class="minusProduct btn btn-link text-muted" onclick="decreasingProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}', idEstablishment: '{{this.idEstablishment}}' })"><i class="fa-solid fa-minus fa-fw"></i></button>
                                                         </span>
                                                         <p id="{{this._id}}" class="d-flex justify-content-center align-items-center fs-5 custom-align-center">0</p>
                                                         <span class="d-flex flex-column justify-content-center">
-                                                            <button class="plusProduct btn btn-link text-muted" onclick="incrementProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}' })"><i class="fa-solid fa-plus fa-fw"></i></button>
+                                                            <button class="plusProduct btn btn-link text-muted" onclick="incrementProduct({ id: '{{this._id}}', name: '{{this.name}}', price: {{this.price}}, photo: '{{this.photo}}', idEstablishment: '{{this.idEstablishment}}' })"><i class="fa-solid fa-plus fa-fw"></i></button>
                                                         </span>
                                                     </div>
                                                 {{/if}}
@@ -50,11 +50,11 @@
                 {{/if}}
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-4 mt-5">
             {{#if location}}
                 {{#if noPayment}}
                     <div class="alert alert-danger" role="alert">
-                        <p class="fw-bold m-0"><i class="fa-solid fa-circle-exclamation fa-fw"></i> Tienes que seleccionar o especificar un metodo de pago, lo puedes hacer en el siguiente <a href="/payments/{{currentUser._id}}">enlace</a></p>
+                        <p class="fw-bold m-0"><i class="fa-solid fa-circle-exclamation fa-fw"></i> Tienes que seleccionar o especificar un método de pago, lo puedes hacer en el siguiente <a href="/payments/{{currentUser._id}}">enlace</a></p>
                     </div>
                 {{/if}}
                 <h4>Tu pedido</h4>
@@ -81,7 +81,7 @@
                 <div class="row justify-content-around">
                     {{#if location}}
                         <div class="col-6">
-                            <button type="submit" class="btn btn-success rounded mt-5" disabled>Crear Pedido</button>
+                            <button id="createOrder" type="submit" class="btn btn-success rounded mt-5" disabled>Crear Pedido</button>
                         </div>
                         <div class="col-3 d-flex justify-content-end align-items-end">
                             Total:
