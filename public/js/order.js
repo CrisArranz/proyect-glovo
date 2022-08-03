@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const localStorageIdEstablishment = localStorage ? Object.entries(JSON.parse(localStorage))[0][1]['idEstablishment'] : undefined;
     const idEstablishment = document.querySelector('.current-establishment-order') ? document.querySelector('.current-establishment-order').id : undefined;
     const btnCreateOrder = document.getElementById('createOrder');
+    const idUser = document.querySelector('#order input[name="idUser"]');
 
     if (localStorage && localStorageIdEstablishment && idEstablishment && idEstablishment === localStorageIdEstablishment) {
         Object.entries(JSON.parse(localStorage)).forEach(values => {
@@ -17,7 +18,9 @@ window.addEventListener('DOMContentLoaded', () => {
     }
     if (btnCreateOrder) {
         btnCreateOrder.addEventListener('click', () => {
-            window.localStorage.removeItem('orderStorage');
+            if (idUser.value) {
+                window.localStorage.removeItem('orderStorage');
+            }
         })
     }
 })
