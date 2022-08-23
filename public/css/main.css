@@ -117,6 +117,10 @@ footer {
     margin: 0 auto;
 }
 
+.custom-height-footer{
+    height: 40em;
+}
+
 .custom-style-title{
     position: relative;
     border-radius: 100px;
